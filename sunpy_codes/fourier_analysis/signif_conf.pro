@@ -1,5 +1,5 @@
 ;+ ;   commented using
-;   http://cires.colorado.edu/geo_data_anal/assign/assign4.html ;
+;   http://cires.colorado.edu/geo_data_anal/assign/assign4.html
 ;   Assuming a Gaussian distribution for each point of your NINO3
 ;   timeseries, then each point of the FFT Power Spectrum should have
 ;   a chi-square distribution with 2 degrees of freedom (DOF) (see
