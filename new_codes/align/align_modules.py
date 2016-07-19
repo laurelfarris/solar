@@ -20,7 +20,6 @@ def shift_sub(image, x0, y0):
 
     ''' Get dimensions of image '''
     s = image.shape
-    x = np.arange(s[1])
     x = np.broadcast_to( np.arange(s[1]), (s[0], s[1]) )
     y = (np.broadcast_to( np.arange(s[0]), (s[1], s[0]) )).transpose()
 
