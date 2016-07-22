@@ -7,6 +7,7 @@ from sunpy.net import vso
 from sunpy.time import parse_time
 import astropy.units as u
 import pdb
+import sys
 #pdb.set_trace()
 
 '''
@@ -18,28 +19,17 @@ Add '.wait()' at the end to keep the script from continuing until the
 data has been downloaded (if needed).
 '''
 
-def VSOsearch(tstart, tend, inst, wave=None):
-
-    ''' Create a new VSOClient instance. This handles the particulars of how the data
-    from the data provider is downloaded to your computer. '''
-    client = vso.VSOClient()
+def VSOsearch(client, tstart, tend, inst,
+              wave=[94,131,171,193,211,304,335],
+              sample=12):
 
     ''' Take string arg and return a datetime object '''
-    tstart = parse_time('2012/06/01 01:00:00')
-    tend = parse_time('2012/06/01 01:59:59')
-
-    ''' Instrument ''' 
-    inst = inst
-
-    ''' Sample (cadence) '''
-    sample = 60
+    tstart = parse_time(tstart)
+    tend = parse_time(tend)
 
     ''' Specify wavelength(s), query for all if none specified by user '''
-    if (inst=='aia'):
-        if not wave:
-            wave = [94,131,171,193,211,304,335]
-        else:
-            wave = [wave]
+    if (inst!='aia'):
+        sys.exit("Not ready for other instruments. Sorry.")
 
     ''' Return a LIST of response objects, each of which is a record found by the VSO '''
     qr = []  # Should make this a dictionary!
@@ -47,17 +37,33 @@ def VSOsearch(tstart, tend, inst, wave=None):
         qr.append(client.query(
           vso.attrs.Time(tstart, tend),
           vso.attrs.Instrument(inst),
-          vso.attrs.Wave(w*u.AA, w*u.AA)
-          ))
+          vso.attrs.Wave(w*u.AA, w*u.AA),
+          vso.attrs.Sample(sample*u.second)
+          )
+        )
 
     ''' Print the number of matches '''
     #print ("Number of records found: {}".format(len(qr)))
     return qr
 
-def VSOget(qr, path):
-    client = vso.VSOClient()
-    return client.get(qr, path)
 
-path = "~/sunpy/data/{instrument}/{file}.fits"
-my_query = VSOsearch('2012/06/01 01:00:00','2012/06/01 01:00:59', 'aia', 193)
-my_data = VSOget(my_query, path)
+def VSOget(client, qr, path):
+    for lis in qr:
+        data = client.get(lis, path)
+
+
+''' Create a new VSOClient instance. This handles the particulars of how the data
+from the data provider is downloaded to your computer. '''
+my_client = vso.VSOClient()
+
+''' Query the VSO. Input wavelength(s) as a list '''
+tstart = '2012/06/01 01:00:00'
+tend = '2012/06/01 01:59:59'
+inst = 'aia'
+wave = [193]
+sample = 60
+my_query = VSOsearch(my_client, tstart, tend, inst, wave=wave, sample=sample)
+
+''' Download data from the VSO '''
+path = '~/sunpy/data/{instrument}/{file}'
+#my_data = VSOget(my_client, my_query, path)
