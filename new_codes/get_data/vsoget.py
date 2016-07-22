@@ -49,7 +49,7 @@ def VSOsearch(client, tstart, tend, inst,
 
 def VSOget(client, qr, path):
     for lis in qr:
-        data = client.get(lis, path)
+        data = client.get(lis, path).wait()
 
 
 ''' Create a new VSOClient instance. This handles the particulars of how the data
@@ -58,12 +58,12 @@ my_client = vso.VSOClient()
 
 ''' Query the VSO. Input wavelength(s) as a list '''
 tstart = '2012/06/01 01:00:00'
-tend = '2012/06/01 01:59:59'
+tend = '2012/06/01 01:00:59'
 inst = 'aia'
-wave = [193]
-sample = 60
-my_query = VSOsearch(my_client, tstart, tend, inst, wave=wave, sample=sample)
+my_wave = [193]
+my_sample = 12
+my_query = VSOsearch(my_client, tstart, tend, inst, wave=my_wave, sample=my_sample)
 
 ''' Download data from the VSO '''
-path = '~/sunpy/data/{instrument}/{file}'
-#my_data = VSOget(my_client, my_query, path)
+path = '~/sunpy/data/{instrument}/{file}.fits'
+my_data = VSOget(my_client, my_query, path)

@@ -12,11 +12,11 @@ import glob
 
 
 def read_fits(data_path):
-    '''
-    Read fits data and return it as a list object that contains
+    ''' Read fits data and return it as a list object that contains
     both the headers and the data.
     '''
     fls = glob.glob(data_path + "*.fits")
+    print fls
     hdu = []
     for f in fls:
         datum = fits.open(f)
@@ -24,4 +24,5 @@ def read_fits(data_path):
         datum.close()
     return hdu
 
-hdu = read_fits("/Users/laurel/sunpy/data/sample_data/")
+path = "/Users/laurel/sunpy/data/AIA/"
+my_hdu = read_fits(path)
