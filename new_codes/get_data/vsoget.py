@@ -7,6 +7,7 @@ from sunpy.net import vso
 from sunpy.time import parse_time
 import astropy.units as u
 import pdb
+#pdb.set_trace()
 
 '''
 This code was constructed using the syntax provided by SunPy.org,
@@ -27,34 +28,36 @@ def VSOsearch(tstart, tend, inst, wave=None):
     tstart = parse_time('2012/06/01 01:00:00')
     tend = parse_time('2012/06/01 01:59:59')
 
-    ''' Specify instrument, wavelength(s), and cadence (seconds) '''
+    ''' Instrument ''' 
     inst = inst
-    if not wave:
-        
-    
-    wave_min = wave
-    wave_max = wave
-    # sample = '12'
 
-    ''' Print the number of matches '''
-    print ("Number of records found: {}".format(len(my_query)))
-    #pdb.set_trace()
+    ''' Sample (cadence) '''
+    sample = 60
+
+    ''' Specify wavelength(s), query for all if none specified by user '''
+    if (inst=='aia'):
+        if not wave:
+            wave = [94,131,171,193,211,304,335]
+        else:
+            wave = [wave]
 
     ''' Return a LIST of response objects, each of which is a record found by the VSO '''
-    return client.query(
-      vso.attrs.Time(tstart, tend),
-      vso.attrs.Instrument(inst),
-      vso.attrs.Wave(wave_min*u.AA, wave_max*u.AA)
-      )
+    qr = []  # Should make this a dictionary!
+    for w in wave:
+        qr.append(client.query(
+          vso.attrs.Time(tstart, tend),
+          vso.attrs.Instrument(inst),
+          vso.attrs.Wave(w*u.AA, w*u.AA)
+          ))
 
-def VSOget():
-    #res = client.get(my_query, path="/Users/laurel/sunpy/data/{instrument}/{file}.fits")
-    return 0
+    ''' Print the number of matches '''
+    #print ("Number of records found: {}".format(len(qr)))
+    return qr
 
+def VSOget(qr, path):
+    client = vso.VSOClient()
+    return client.get(qr, path)
 
-
-my_query = VSOsearch('2012/06/01 01:00:00','2012/06/01 01:00:59', 'aia')
-
-
-
-
+path = "~/sunpy/data/{instrument}/{file}.fits"
+my_query = VSOsearch('2012/06/01 01:00:00','2012/06/01 01:00:59', 'aia', 193)
+my_data = VSOget(my_query, path)
