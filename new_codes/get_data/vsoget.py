@@ -1,7 +1,10 @@
 '''
 Programmer:     Laurel Farris
 Last modified:  22 July 2012
-
+Purpose:        This code was constructed using the syntax provided by SunPy.org,
+                modelled after vsoget.pro provided by Sam (author?)
+                You can set a default download directory in your
+                sunpyrc configuration file.
 '''
 import pdb
 import sys
@@ -13,12 +16,6 @@ from astropy.io import fits
 import glob
 import pickle
 
-'''
-This code was constructed using the syntax provided by SunPy.org,
-modelled after vsoget.pro provided by Sam (author?)
-Download data. If you have set your default download directory in your
-sunpyrc configuration file then you do not need to identify a path at all.
-'''
 
 def VSOsearch(client, tstart, tend, inst,
               wave=[94,131,171,193,211,304,335],
@@ -29,7 +26,6 @@ def VSOsearch(client, tstart, tend, inst,
         sys.exit("Not ready for other instruments. Sorry.")
 
     ''' Return a LIST of response objects, each of which is a record found by the VSO '''
-    wave = [94]
     qr = []
     for w in wave:
         qr.append(client.query(
@@ -69,29 +65,3 @@ def read_fits(data_path, filename=None):
         pickle.dump(hdu, open(filename, "wb"))
         print "Done pickling: " + str(datetime.now())
     return hdu
-
-
-''' Create a new VSOClient instance. This handles the particulars of how the data
-    from the data provider is downloaded to your computer. '''
-my_client = vso.VSOClient()
-
-''' Query the VSO. Input wavelength(s) as a list '''
-tstart = '2012/06/01 01:00:00'
-
-tend = '2012/06/01 01:00:59'
-inst = 'aia'
-my_wave = [94,131,171,211,304,335],
-my_sample = 12
-my_query = VSOsearch(my_client, tstart, tend, inst, wave=my_wave, sample=my_sample)
-pdb.set_trace()
-
-''' Download data from the VSO '''
-path = '~/sunpy/data/{instrument}/{file}.fits'
-my_data = VSOget(my_client, my_query, path)
-pdb.set_trace()
-
-''' Read fits and (if desired) pickle returned object
-    (this process takes a long time, so probably good idea to save the data) '''
-hdu_193 = read_fits("/solarstorm/laurel07/data/AIA/", "aia193hdu.p")
-pdb.set_trace()
-
