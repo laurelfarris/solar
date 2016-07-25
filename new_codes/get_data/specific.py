@@ -11,19 +11,18 @@ my_client = vso.VSOClient()
 tstart = '2012/06/01 01:00:00'
 tend = '2012/06/01 01:00:59'
 inst = 'aia'
-#my_wave = [94,131,171,211,304,335]
-my_wave = [94,131]
+my_wave = [94,131,171,211,304,335]
 my_sample = 12
-my_query = VSOsearch(my_client, tstart, tend, inst, wave=my_wave, sample=my_sample)
-#pdb.set_trace()
+#my_query = VSOsearch(my_client, tstart, tend, inst, wave=my_wave, sample=my_sample)
 
 ''' Download data from the VSO '''
-path = '/Users/laurel/sunpy/data/{instrument}/{file}.fits'
-path2 = "/solarstorm/laurel07/data/AIA/"
+#path = '/Users/laurel/sunpy/data/{instrument}/{file}.fits'
+#path = "/solarstorm/laurel07/data/AIA/"
 #my_data = VSOget(my_client, my_query, path)
-#pdb.set_trace()
 
 ''' Read fits and (if desired) pickle returned object
     (this process takes a long time, so probably good idea to save the data) '''
-#hdu = read_fits(path)  #, "aia193hdu.p")
+
+path = '/Users/laurel/sunpy/data/AIA/'
+hdu = read_fits(path)  #, "aia193hdu.p")
 #pdb.set_trace()

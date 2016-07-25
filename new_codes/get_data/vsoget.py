@@ -38,30 +38,44 @@ def VSOsearch(client, tstart, tend, inst,
 
     ''' Print the number of matches '''
     #print ("Number of records found: {}".format(len(qr)))
+
+    ''' Return query as a dictionary. Access using qr[94], qr[131], etc. '''
     return dict(zip(wave, qr))
 
 
 def VSOget(client, qr, path):
-    for lis in qr:
-        data = client.get(lis, path).wait()
+    for i in qr:
+        data = client.get(qr[i], path).wait()
 
-
+'''
 def read_fits(data_path, filename=None):
-    '''
-    Read fits data and returns the primary HDU,
-    a list object that contains both the headers and the data.
-    '''
+    #Read fits data and returns the primary HDU,
+    #a list object that contains both the headers and the data.
     print "Start reading fits: " + str(datetime.now())
     fls = glob.glob(data_path + "*.fits")
     hdu = { 'data':[], 'header':[] }
     for f in fls:
         hdulist = fits.open(f)
+        print type(hdulist[0].data)
         hdu['data'].append(hdulist[0].data)
         hdu['header'].append(hdulist[0].header)
-        hdulist.close()
+        #hdulist.close()
     print "Done: " + str(datetime.now())
     if filename:
         print "Start pickling: " + str(datetime.now())
         pickle.dump(hdu, open(filename, "wb"))
         print "Done pickling: " + str(datetime.now())
     return hdu
+'''
+
+path = '/Users/laurel/sunpy/data/AIA/'
+#path = '/solarstorm/laurel07/data/AIA/'
+
+print "Start reading fits: " + str(datetime.now())
+
+fls = glob.glob(path + "*.fits")
+for f in fls:
+    hdulist = fits.open(f)
+    print type(hdulist[0].data)
+    hdulist.close()
+print "Done: " + str(datetime.now())
