@@ -49,10 +49,10 @@ def VSOget(client, qr, path):
 
 
 def read_fits(data_path)
-    #Read fits data and returns the primary HDU,
-    #a list object that contains both the headers and the data.
+    ''' Read fits data and returns the primary HDU,
+        a list object that contains both the headers and the data. '''
     print "Start reading fits: " + str(datetime.now())
-    fls = glob.glob(data_path + "*.fits")
+    fls = glob.glob(data_path)
     hdu = { 'data':[], 'header':[] }
     for f in fls:
         hdulist = fits.open(f)

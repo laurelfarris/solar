@@ -19,25 +19,3 @@ my_sample = 12
 #path = '/Users/laurel/sunpy/data/{instrument}/{file}.fits'
 #path = "/solarstorm/laurel07/data/AIA/"
 #my_data = VSOget(my_client, my_query, path)
-
-''' Read fits and (if desired) pickle returned object
-    (this process takes a long time, so probably good idea to save the data) '''
-
-path = '/Users/laurel/sunpy/data/AIA/*94*.fits'
-hdu = read_fits(path)  #, "aia193hdu.p")
-
-# Make a data cube (one wavelength only, for now)
-x = (hdu['data'][0].shape[1])
-y = (hdu['data'][0].shape[0])
-z = len(hdu['data'])
-data_94 = np.zeros((x, y, z))
-for i in range(1, z):
-    np.append(data_94, np.expand_dims(hdu['data'][i], axis=2), axis=2)
-
-# Align data (make a module... github?)
-
-
-# Save portion of data with bright point (BP) only
-BP = data[x1:x2, y1:y2, :]
-
-# Save data to file
