@@ -16,7 +16,7 @@ def shift_sub(image, x0, y0):
     if int(x0)-x0 == 0. & int(y0)-y0 == 0.:
         image = np.roll(image, x0, axis=1)
         image = np.roll(image, y0, axis=0)
-    return image
+        return image
 
     ''' Get dimensions of image '''
     s = image.shape
@@ -31,7 +31,7 @@ def shift_sub(image, x0, y0):
     return interp2d(x1, y1, image, kind='cubic')
 
 
-def alignoffset(image, reference, cor):
+def alignoffset(image, reference):
     ''' Determine the offsets of an image with respect to a reference image '''
     si = image.shape
     sr = reference.shape
@@ -51,7 +51,27 @@ def alignoffset(image, reference, cor):
     if nx != si[1] | ny != si[2]:
         image1 = congrid(image1, nx, ny, cubic=-0.5)
         reference1 = congrid(reference1, nx, ny, cubic=-0.5)
+    return cor
 
 
 def align_cube3(cube):
+    ''' Finished! Needs to be tested though '''
+    sz = cube.shape
+    ''' Use middle image as reference (3D --> 2D) '''
+    ref = np.reshape(cube[:,:,(sz[2])/2], (sz[0], sz[1]))
+    shifts = np.zeros((sz[2], 2))
+
+    print "Start: " + str(datetime.now())
+    for i in range(sz[2]-1):
+        offset = alignoffset(cube[:,:,i], ref)
+        cube[:,:,i] = shift_sub(cube[:,:,i], -offset[0], -offset[1])
+        shifts[:,i] = -offset
+    print "Finish: " + str(datetime.now())
+    x_sdv = np.std(shifts[0,:])
+    y_sdv = np.std(shifts[1,:])
+
+    print "x stddev: {:.4f}".format(x_sdv)
+    print "y stddev: {:.4f}".format(y_sdv)
+
+
     return 0
