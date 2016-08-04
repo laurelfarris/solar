@@ -1,0 +1,5 @@
+#!/bin/bash
+
+
+# reference arguments using $1
+find . -type f \( -name "*.log" -o -name "*.bbl" -o -name "*.blg" -o -name "*.aux" -o -name "*.pdf" \) -delete

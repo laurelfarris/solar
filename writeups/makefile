@@ -9,10 +9,3 @@ ann: annotated_bib.tex
 	bibtex annotated_bib
 	pdflatex annotated_bib
 	pdflatex annotated_bib
-
-ann2: ann2.tex
-	pdflatex ann2
-	bibtex ann2
-	pdflatex ann2
-	pdflatex ann2
-

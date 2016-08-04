@@ -1,8 +1,8 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2015.11.14)  22 JUL 2016 11:46
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2015.11.14)  3 AUG 2016 15:20
 entering extended mode
  %&-line parsing enabled.
-**ann.tex
-(./ann.tex
+**annotated_bib.tex
+(./annotated_bib.tex
 LaTeX2e <2005/12/01>
 Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
 yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
@@ -138,8 +138,9 @@ File: hpdftex.def 2007/02/07 v6.75r Hyperref driver for pdfTeX
 \Fld@listcount=\count98
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 20.
- (./ann.aux)
-\openout1 = `ann.aux'.
+
+No file annotated_bib.aux.
+\openout1 = `annotated_bib.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
@@ -195,7 +196,6 @@ driver: pdftex
 (1in=72.27pt, 1cm=28.45pt)
 -----------------------
 Package hyperref Info: Link coloring ON on input line 23.
-
 (/usr/share/texmf/tex/latex/hyperref/nameref.sty
 Package: nameref 2006/12/27 v2.28 Cross-referencing by name of section
 
@@ -206,9 +206,8 @@ Package: refcount 2006/02/20 v3.0 Data extraction from references (HO)
 )
 LaTeX Info: Redefining \ref on input line 23.
 LaTeX Info: Redefining \pageref on input line 23.
- (./ann.out) (./ann.out)
 \@outlinefile=\write3
-\openout3 = `ann.out'.
+\openout3 = `annotated_bib.out'.
 
 
 
@@ -250,21 +249,22 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 119.
- [2] (./ann.aux) ) 
+ [2] (./annotated_bib.aux) ) 
 Here is how much of TeX's memory you used:
- 3677 strings out of 256214
- 49341 string characters out of 1916999
+ 3659 strings out of 256214
+ 49288 string characters out of 1916999
  114657 words of memory out of 1500000
- 6957 multiletter control sequences out of 10000+200000
- 3938 words of font info for 15 fonts, out of 1200000 for 2000
+ 6943 multiletter control sequences out of 10000+200000
+ 4245 words of font info for 16 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
- 25i,5n,37p,284b,335s stack positions out of 5000i,500n,6000p,200000b,15000s
-</usr/share/texmf/fonts/type1/bluesky/cm/cmmi10.pfb></usr/sha
-re/texmf/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf/fonts/type1/bluesky
-/cm/cmr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy10.pfb>
-Output written on ann.pdf (2 pages, 43085 bytes).
+ 25i,5n,37p,300b,335s stack positions out of 5000i,500n,6000p,200000b,15000s
+</usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb
+></usr/share/texmf/fonts/type1/bluesky/cm/cmmi10.pfb></usr/share/texmf/fonts/ty
+pe1/bluesky/cm/cmr10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr12.pfb></u
+sr/share/texmf/fonts/type1/bluesky/cm/cmsy10.pfb>
+Output written on annotated_bib.pdf (2 pages, 41417 bytes).
 PDF statistics:
- 133 PDF objects out of 1000 (max. 8388607)
- 21 named destinations out of 1000 (max. 131072)
- 161 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 86 PDF objects out of 1000 (max. 8388607)
+ 22 named destinations out of 1000 (max. 131072)
+ 17 words of extra memory for PDF output out of 10000 (max. 10000000)
 

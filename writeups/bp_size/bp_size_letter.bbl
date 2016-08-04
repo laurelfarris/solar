@@ -1,0 +1,14 @@
+\begin{thebibliography}{}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{{Lemen} {et~al.}(2012){Lemen}, {Title}, {Akin}, {Boerner}, {Chou},
+  {Drake}, {Duncan}, {Edwards}, {Friedlaender}, {Heyman}, {Hurlburt}, {Katz},
+  {Kushner}, {Levay}, {Lindgren}, {Mathur}, {McFeaters}, {Mitchell}, {Rehse},
+  {Schrijver}, {Springer}, {Stern}, {Tarbell}, {Wuelser}, {Wolfson}, {Yanari},
+  {Bookbinder}, {Cheimets}, {Caldwell}, {Deluca}, {Gates}, {Golub}, {Park},
+  {Podgorski}, {Bush}, {Scherrer}, {Gummin}, {Smith}, {Auker}, {Jerram},
+  {Pool}, {Soufli}, {Windt}, {Beardsley}, {Clapp}, {Lang}, \&
+  {Waltham}}]{Lemen}
+{Lemen}, J.~R., {Title}, A.~M., {Akin}, D.~J., {et~al.} 2012, \solphys, 275, 17
+
+\end{thebibliography}
