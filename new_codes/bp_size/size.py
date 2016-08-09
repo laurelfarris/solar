@@ -10,7 +10,7 @@ import pdb
 
 fig, ax = plt.subplots()
 ax.set_xlabel('distance [pixels]')
-ax.set_ylabel('intensity [arbitrary]')
+ax.set_ylabel('Max cross-correlation')
 ax.tick_params(axis='both',labelsize='small')
 
 f = open('bp_sizes.dat')
