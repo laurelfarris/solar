@@ -1,13 +1,15 @@
 '''
 Programmer:         Laurel Farris
-Last modified:      12 August 2016
+Last modified:      13 August 2016
 '''
 import pdb
+import sys
 import numpy as np
 import matplotlib.pyplot as plt
 import sunpy
 import sunpy.map
 import sunpy.cm
+import matplotlib.colors as colors
 from sunpy.net import vso
 from sunpy.time import parse_time
 from astropy.io import fits
@@ -54,32 +56,39 @@ def make_cube(my_hdu):
 path = "/solarstorm/laurel07/data/AIA/"
 waves = ['94', '131', '171', '193', '211', '304', '335']
 
-# fig, ax = plt.subplots(figsize=(9,6), nrows=2, ncols=3, sharex=True, sharey=True)
-fig, ax = plt.subplots(nrows=2, ncols=3, sharex=True, sharey=True)
-axes = [ax[0,0],ax[0,1],ax[0,2],ax[1,0],ax[1,1],ax[1,2]]
+#fig, ax = plt.subplots(figsize=(9,6),nrows=2, ncols=3)
+    #gridspec_kw={'width_ratios':[1,1,1,1,1]}, # 'height_ratios':[1,1]},
+    #sharex=True, sharey=True
+fig = plt.figure()
 
 #x = 1140 & y = 2630 & radius = 50
+#axes[i] = sunpy.map.Map((data[x-radius:x+radius, y-radius:y+radius], header))
 
+#header=[] data=[] fls=[]
 for i in range(0, len(waves)-1):
-    print i
-    fls = glob.glob(path + "*" + waves[i] + "A_2012*.fits")
-    hdu = fits.open(fls[0])
-    header = hdu[0].header
-    data = hdu[0].data
-    hdu.close()
-    
-    wavelength = header['wavelnth']
-    axes[i] = sunpy.map.Map(fls[0])
-    
-    #axes[i] = sunpy.map.Map((data[x-radius:x+radius, y-radius:y+radius], header))
-    axes[i].plot_settings['title'] = '' #'AIA/SDO ' + str(wavelength)
-    axes[i].plot_settings['cmap'] = plt.get_cmap('sdoaia' + str(wavelength))
+    #hdu = fits.open((glob.glob(path + "*" + waves[i] + "A_2012*.fits"))[0])
+    #header.append(hdu[0].header) #data.append(hdu[0].data)
+    #header = hdu[0].header data = hdu[0].data
+    #hdu.close()
+    ax = fig.add_subplot(2,3,i+1)
+    m = sunpy.map.Map((glob.glob(path + "*" + waves[i] + "A_2012*.fits"))[0])
+    m.plot_settings['title'] = ' ' #'AIA/SDO ' + waves[i]
+    m.plot_settings['x_title'] = ' ' #'AIA/SDO ' + waves[i]
+    m.plot_settings['cmap'] = plt.get_cmap('sdoaia' + waves[i])
+    ax.set_xlabel('')
+    ax.set_ylabel('')
+    ax.set_xticks([])
+    ax.set_yticks([])
+    m.plot(xlabel='',ylabel='')
+    #wavelength = header['wavelnth']
+    '''
+    #norm = colors.Normalize(vmin=0, vmaxes[i]=ax.mean() + 5 * axes[i].std())
+    #axes[i].plot(norm=norm)
+    ''' 
 
-    axes[i].plot()
-    plt.show(block=False)
-    pdb.set_trace()
 
+plt.subplots_adjust(wspace=0.1, hspace=0.1)
+plt.show(block=False)
 #plt.colorbar()
-#plt.show(block=False)
 '''
 '''
