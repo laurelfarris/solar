@@ -16,7 +16,6 @@ from astropy.io import fits
 import glob
 import pickle
 
-
 def VSOsearch(client, tstart, tend, inst,
               wave=[94,131,171,193,211,304,335],
               sample=12):
