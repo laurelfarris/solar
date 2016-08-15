@@ -72,6 +72,7 @@ for i in range(0, len(waves)-1):
     #hdu.close()
     ax = fig.add_subplot(2,3,i+1)
     m = sunpy.map.Map((glob.glob(path + "*" + waves[i] + "A_2012*.fits"))[0])
+    # m.index('unwanted x/y label')... should return key
     m.plot_settings['title'] = ' ' #'AIA/SDO ' + waves[i]
     m.plot_settings['x_title'] = ' ' #'AIA/SDO ' + waves[i]
     m.plot_settings['cmap'] = plt.get_cmap('sdoaia' + waves[i])
@@ -84,7 +85,7 @@ for i in range(0, len(waves)-1):
     '''
     #norm = colors.Normalize(vmin=0, vmaxes[i]=ax.mean() + 5 * axes[i].std())
     #axes[i].plot(norm=norm)
-    ''' 
+    '''
 
 
 plt.subplots_adjust(wspace=0.1, hspace=0.1)
