@@ -3,8 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 import pdb
-from matplotlib.ticker import AutoMinorLocator
-from matplotlib.ticker import MultipleLocator
+import matplotlib.ticker as mtick
 
 import matplotlib
 matplotlib.rc('font',**{'family':'serif','serif':['Times']})
@@ -23,6 +22,14 @@ for i in range(0, len(waves)):
     m = axes[i].scatter(r, cor, c=t, vmin=min(t), vmax=max(t),
                     cmap='viridis', s=3, lw=0)
     axes[i].axis('tight')  # no extra space between data points and axes
+
+    majorLocator = mtick.LinearLocator(numticks=10)
+
+    axes[i].xaxis.set_major_locator(majorLocator)
+    #axes[i].xaxis.set_minor_locator(minorLocator)
+
+    axes[i].yaxis.set_major_locator(majorLocator)
+    #axes[i].yaxis.set_minor_locator(minorLocator)
 
     axes[i].minorticks_on()
     axes[i].tick_params(axis='both', which='minor', direction='in', length=4)

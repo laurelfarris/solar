@@ -53,7 +53,8 @@ def make_cube(my_hdu):
 
 ''' Make panel of multi-wavelength images of bright point '''
 
-path = "/solarstorm/laurel07/data/AIA/"
+#path = "/solarstorm/laurel07/data/AIA/"
+path = "~/sunpy/data/AIA/"
 waves = ['94', '131', '171', '193', '211', '304', '335']
 
 #fig, ax = plt.subplots(figsize=(9,6),nrows=2, ncols=3)
@@ -71,7 +72,8 @@ for i in range(0, len(waves)-1):
     #header = hdu[0].header data = hdu[0].data
     #hdu.close()
     ax = fig.add_subplot(2,3,i+1)
-    m = sunpy.map.Map((glob.glob(path + "*" + waves[i] + "A_2012*.fits"))[0])
+    fls = glob.glob(path + "*" + waves[i] + "A_2012*.fits")
+    m = sunpy.map.Map(fls[0])
     # m.index('unwanted x/y label')... should return key
     m.plot_settings['title'] = ' ' #'AIA/SDO ' + waves[i]
     m.plot_settings['x_title'] = ' ' #'AIA/SDO ' + waves[i]
