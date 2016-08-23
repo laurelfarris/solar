@@ -43,7 +43,7 @@ fig.text(0.5, 0.03, 'radius [pixels]', ha='center', fontsize=fontsize)
 fig.text(0.08, 0.5, 'maximum cross-correlation', va='center', rotation='vertical', fontsize=fontsize)
 
 cax = fig.add_axes([0.93, 0.10, 0.02, 0.80])
-step=30
+step = 30
 cbar = fig.colorbar(m, cax=cax)
 #cbar.set_ticks(np.arange(min(t),max(t)+step,step))
 #cbar.set_ticklabels(np.arange(min(t),max(t)+step,0.5*step))

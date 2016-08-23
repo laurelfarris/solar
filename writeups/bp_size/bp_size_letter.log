@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2015.11.14)  3 AUG 2016 16:42
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2015.11.14)  22 AUG 2016 16:22
 entering extended mode
  %&-line parsing enabled.
 **bp_size_letter
@@ -157,52 +157,51 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
 LaTeX Font Info:    ... okay on input line 10.
 
 AAS 2-column preprint substyle, v5.2 <12 Dec 2003>.
-LaTeX Font Info:    Try loading font information for U+lasy on input line 44.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 57.
 (/usr/share/texmf/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 44.
+LaTeX Font Info:    Try loading font information for U+msa on input line 57.
 
 (/usr/share/texmf/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2002/01/19 v2.2g AMS font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 44.
+LaTeX Font Info:    Try loading font information for U+msb on input line 57.
 
 (/usr/share/texmf/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2002/01/19 v2.2g AMS font definitions
 )
-Overfull \hbox (10.63483pt too wide) in paragraph at lines 44--59
+Overfull \hbox (10.63483pt too wide) in paragraph at lines 57--72
  [][] 
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-(./bp_size_letter.bbl) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+(./bp_size_letter.bbl [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
-]
-(./bp_size_letter.aux) ) 
+])
+[2
+
+] (./bp_size_letter.aux) ) 
 Here is how much of TeX's memory you used:
- 1859 strings out of 256214
- 21154 string characters out of 1916999
- 74874 words of memory out of 1500000
- 5134 multiletter control sequences out of 10000+200000
+ 1863 strings out of 256214
+ 21195 string characters out of 1916999
+ 75874 words of memory out of 1500000
+ 5138 multiletter control sequences out of 10000+200000
  12013 words of font info for 49 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
- 32i,11n,26p,580b,236s stack positions out of 5000i,500n,6000p,200000b,15000s
-</usr/share/texmf/fonts/type1/bluesky/cm/cmbx10.pfb></u
-sr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb></usr/share/texmf/fonts/type1/
-bluesky/cm/cmbxti10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pfb></us
-r/share/texmf/fonts/type1/bluesky/cm/cmr12.pfb></usr/share/texmf/fonts/type1/bl
-uesky/cm/cmr6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share
-/texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/cm
-/cmr9.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti10.pfb></usr/share/texmf
-/fonts/type1/bluesky/cm/cmti9.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt
-10.pfb>
-Output written on bp_size_letter.pdf (1 page, 73020 bytes).
+ 32i,11n,26p,580b,242s stack positions out of 5000i,500n,6000p,200000b,15000s
+</usr/share/texmf/fonts/type1/bluesky/cm/cmbx10.pfb><
+/usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb></usr/share/texmf/fonts/type
+1/bluesky/cm/cmbxti10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pfb></
+usr/share/texmf/fonts/type1/bluesky/cm/cmr12.pfb></usr/share/texmf/fonts/type1/
+bluesky/cm/cmr6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/sha
+re/texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/
+cm/cmr9.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti10.pfb></usr/share/tex
+mf/fonts/type1/bluesky/cm/cmti9.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cm
+tt10.pfb>
+Output written on bp_size_letter.pdf (2 pages, 76341 bytes).
 PDF statistics:
- 54 PDF objects out of 1000 (max. 8388607)
+ 57 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

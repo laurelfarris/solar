@@ -1,6 +1,9 @@
 \begin{thebibliography}{}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
+\bibitem[{{Howard} \& {Stenflo}(1972)}]{Howard}
+{Howard}, R., \& {Stenflo}, J.~O. 1972, \solphys, 22, 402
+
 \bibitem[{{Lemen} {et~al.}(2012){Lemen}, {Title}, {Akin}, {Boerner}, {Chou},
   {Drake}, {Duncan}, {Edwards}, {Friedlaender}, {Heyman}, {Hurlburt}, {Katz},
   {Kushner}, {Levay}, {Lindgren}, {Mathur}, {McFeaters}, {Mitchell}, {Rehse},
@@ -10,5 +13,14 @@
   {Pool}, {Soufli}, {Windt}, {Beardsley}, {Clapp}, {Lang}, \&
   {Waltham}}]{Lemen}
 {Lemen}, J.~R., {Title}, A.~M., {Akin}, D.~J., {et~al.} 2012, \solphys, 275, 17
+
+\bibitem[{{Riethm{\"u}ller} {et~al.}(2014){Riethm{\"u}ller}, {Solanki},
+  {Berdyugina}, {Sch{\"u}ssler}, {Mart{\'{\i}}nez Pillet}, {Feller},
+  {Gandorfer}, \& {Hirzberger}}]{Riethmuller}
+{Riethm{\"u}ller}, T.~L., {Solanki}, S.~K., {Berdyugina}, S.~V., {et~al.} 2014,
+  \aap, 568, A13
+
+\bibitem[{{Srivastava} \& {Dwivedi}(2010)}]{Srivastava}
+{Srivastava}, A.~K., \& {Dwivedi}, B.~N. 2010, \mnras, 405, 2317
 
 \end{thebibliography}
