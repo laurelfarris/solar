@@ -6,6 +6,7 @@ import pdb
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib import patches
 import sunpy
 import sunpy.map
 import sunpy.cm
@@ -13,6 +14,7 @@ import matplotlib.colors as colors
 from sunpy.net import vso
 from sunpy.time import parse_time
 from astropy.io import fits
+import astropy.units as u
 import glob
 #import get_data
 
@@ -52,46 +54,79 @@ def make_cube(my_hdu):
 
 
 ''' Make panel of multi-wavelength images of bright point '''
-
-#path = "/solarstorm/laurel07/data/AIA/"
-path = "~/sunpy/data/AIA/"
-waves = ['94', '131', '171', '193', '211', '304', '335']
-
-#fig, ax = plt.subplots(figsize=(9,6),nrows=2, ncols=3)
-    #gridspec_kw={'width_ratios':[1,1,1,1,1]}, # 'height_ratios':[1,1]},
-    #sharex=True, sharey=True
-fig = plt.figure()
-
-#x = 1140 & y = 2630 & radius = 50
-#axes[i] = sunpy.map.Map((data[x-radius:x+radius, y-radius:y+radius], header))
-
+offset = 2048
+pix_to_arcsec = (1./2.048)
+x0 = (1288-offset) * pix_to_arcsec * u.arcsecond
+y0 = (2798-offset) * pix_to_arcsec * u.arcsecond
+length = 50 * pix_to_arcsec * u.arcsecond
 #header=[] data=[] fls=[]
-for i in range(0, len(waves)-1):
     #hdu = fits.open((glob.glob(path + "*" + waves[i] + "A_2012*.fits"))[0])
     #header.append(hdu[0].header) #data.append(hdu[0].data)
     #header = hdu[0].header data = hdu[0].data
     #hdu.close()
-    ax = fig.add_subplot(2,3,i+1)
-    fls = glob.glob(path + "*" + waves[i] + "A_2012*.fits")
+#path = '/solarstorm/laurel07/data/AIA/'
+path = '/Users/laurel/sunpy/data/AIA/'
+waves = ['94', '131', '171', '193', '211', '304', '335']
+
+fig = plt.figure(figsize=(9,6))
+
+
+fls = glob.glob(path + '*193A_2012*.fits')
+m = sunpy.map.Map(fls[0])
+m = m.submap(
+  u.Quantity([x0 - length, x0 + length]),
+  u.Quantity([y0 - length, y0 + length]))
+ax = fig.add_subplot(1,1,1,projection = m)
+cmap1=plt.cm.Greys_r
+cmap2=plt.get_cmap('sdoaia193'),
+m.plot(annotate=False, cmap=cmap1,
+      norm=colors.LogNorm())
+plt.show(block=False)
+pdb.set_trace()
+
+
+for i in range(0, len(waves)-1):
+    fls = glob.glob(path + '*' + waves[i] + 'A_2012*.fits')
     m = sunpy.map.Map(fls[0])
-    # m.index('unwanted x/y label')... should return key
-    m.plot_settings['title'] = ' ' #'AIA/SDO ' + waves[i]
-    m.plot_settings['x_title'] = ' ' #'AIA/SDO ' + waves[i]
-    m.plot_settings['cmap'] = plt.get_cmap('sdoaia' + waves[i])
-    ax.set_xlabel('')
-    ax.set_ylabel('')
-    ax.set_xticks([])
-    ax.set_yticks([])
-    m.plot(xlabel='',ylabel='')
-    #wavelength = header['wavelnth']
-    '''
-    #norm = colors.Normalize(vmin=0, vmaxes[i]=ax.mean() + 5 * axes[i].std())
-    #axes[i].plot(norm=norm)
-    '''
+    m = m.submap(
+      u.Quantity([x0 - length, x0 + length]),
+      u.Quantity([y0 - length, y0 + length]))
+    ax = fig.add_subplot(2,3,i+1,projection = m)
+    #m.plot_settings['title'] = m.detector
+    #m.plot_settings['x_title'] = ' ' #'AIA/SDO ' + waves[i]
+    m.plot(annotate=False, cmap=plt.get_cmap('sdoaia'+waves[i]),
+          norm=colors.Normalize())
+          #norm=colors.LogNorm(vmin=min(0,m.min()), vmax=m.max()))
+    m.draw_rectangle(bottom_left=u.Quantity([x0-length, y0-length]),
+                     width=u.Quantity(length*2),
+                     height=u.Quantity(length*2))
 
 
-plt.subplots_adjust(wspace=0.1, hspace=0.1)
+    '''
+    lon = ax.coords[0]  # x
+    lat = ax.coords[1]  # y
+    lon.set_ticklabel_visible(False)
+    lon.set_ticks_visible(False)
+    lon.set_axislabel('')
+    lat.set_ticklabel_visible(False)
+    lat.set_ticks_visible(False)
+    lat.set_axislabel('')
+    '''
+
+    # Prevent the image from being re-scaled while overplotting.
+    #ax.set_autoscale_on(False)
+    #xc = [0,100,1000] * u.arcsec
+    #yc = [0,100,1000] * u.arcsec
+
+    # ax.get_transform() tells WCSAxes what coordinates to plot in.
+    # 'world' coordinates are always in degrees
+    #p = plt.plot(xc.to(u.deg), yc.to(u.deg), 'o', transform=ax.get_transform('world'))
+
+
+    ax.axis('tight')
+    ax.text(0.8, 0.9, waves[i] + '$\mathrm{\mathbf{\AA{}}}$', fontweight='bold', fontsize=10, transform=ax.transAxes)
+
+#plt.subplots_adjust(wspace=0.1, hspace=0.1)
+#fig.tight_layout()
 plt.show(block=False)
 #plt.colorbar()
-'''
-'''
