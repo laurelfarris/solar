@@ -54,11 +54,9 @@ def make_cube(my_hdu):
 
 
 ''' Make panel of multi-wavelength images of bright point '''
-offset = 2048
-pix_to_arcsec = (1./2.048)
-x0 = (1288-offset) * pix_to_arcsec * u.arcsecond
-y0 = (2798-offset) * pix_to_arcsec * u.arcsecond
-length = 50 * pix_to_arcsec * u.arcsecond
+x0 = -550 * u.arcsecond
+y0 = 350 * u.arcsecond
+length = 50 * u.arcsecond
 #header=[] data=[] fls=[]
     #hdu = fits.open((glob.glob(path + "*" + waves[i] + "A_2012*.fits"))[0])
     #header.append(hdu[0].header) #data.append(hdu[0].data)
@@ -70,7 +68,7 @@ waves = ['94', '131', '171', '193', '211', '304', '335']
 
 fig = plt.figure(figsize=(9,6))
 
-
+'''
 fls = glob.glob(path + '*193A_2012*.fits')
 m = sunpy.map.Map(fls[0])
 m = m.submap(
@@ -82,9 +80,8 @@ cmap2=plt.get_cmap('sdoaia193'),
 m.plot(annotate=False, cmap=cmap1,
       norm=colors.LogNorm())
 plt.show(block=False)
-pdb.set_trace()
 
-
+'''
 for i in range(0, len(waves)-1):
     fls = glob.glob(path + '*' + waves[i] + 'A_2012*.fits')
     m = sunpy.map.Map(fls[0])
@@ -95,14 +92,13 @@ for i in range(0, len(waves)-1):
     #m.plot_settings['title'] = m.detector
     #m.plot_settings['x_title'] = ' ' #'AIA/SDO ' + waves[i]
     m.plot(annotate=False, cmap=plt.get_cmap('sdoaia'+waves[i]),
-          norm=colors.Normalize())
-          #norm=colors.LogNorm(vmin=min(0,m.min()), vmax=m.max()))
-    m.draw_rectangle(bottom_left=u.Quantity([x0-length, y0-length]),
-                     width=u.Quantity(length*2),
-                     height=u.Quantity(length*2))
+   #       norm=colors.LogNorm(
+    #        vmin=0, vmax=m.max())
+            #vmin=max(0,m.min()), vmax=m.max())
+          )
+    #m.draw_rectangle(bottom_left=u.Quantity([x0-length, y0-length]), width=u.Quantity(length*2), height=u.Quantity(length*2))
 
 
-    '''
     lon = ax.coords[0]  # x
     lat = ax.coords[1]  # y
     lon.set_ticklabel_visible(False)
@@ -111,7 +107,6 @@ for i in range(0, len(waves)-1):
     lat.set_ticklabel_visible(False)
     lat.set_ticks_visible(False)
     lat.set_axislabel('')
-    '''
 
     # Prevent the image from being re-scaled while overplotting.
     #ax.set_autoscale_on(False)
@@ -128,5 +123,6 @@ for i in range(0, len(waves)-1):
 
 #plt.subplots_adjust(wspace=0.1, hspace=0.1)
 #fig.tight_layout()
-plt.show(block=False)
+#plt.show(block=False)
 #plt.colorbar()
+plt.savefig('full_bp.png', bbox_inches='tight', dpi=300)
