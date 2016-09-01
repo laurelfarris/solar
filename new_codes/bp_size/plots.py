@@ -19,10 +19,12 @@ for i in range(0, len(waves)):
     x, y, r, cor, t = np.loadtxt(f, unpack=True)
     ax = fig.add_subplot(3,2,i+1)
     m = ax.scatter(r, cor, c=t, vmin=min(t), vmax=max(t),
-                    cmap='viridis', s=5, lw=0)
+                    cmap='viridis', s=2, lw=0)
     #ax.axis('tight')
+    '''
     ax.set_xlim(left=-5, right=max(r))
     ax.set_ylim(bottom=0.6, top=1)
+    '''
     ax.text(68, 0.93, waves[i] + ' $\mathrm{\AA{}}$', ha='right')
     ax.minorticks_on()
     ax.tick_params(axis='both', which='minor', direction='in', length=4)
@@ -47,10 +49,11 @@ fig.subplots_adjust(left=0.1, right=0.85, bottom=0.08, top=0.95, wspace=0.2, hsp
 cax = fig.add_axes([0.90, 0.05, 0.02, 0.90])
 #step=30
 cbar = fig.colorbar(m, cax=cax)
-cbar.set_label('timelag [cadence]', rotation=270)
+cbar.set_label('timelag [image, with cadence = 12 s]', rotation=270)
 #cbar.set_ticks(np.arange(min(t),max(t)+step,step))
 #cbar.set_ticklabels(np.arange(min(t),max(t)+step,0.5*step))
 #cbar.ax.set_xticklabels(['Low', 'Medium', 'High'])  # horizontal colorbar
 
 #plt.show(block=False)
-plt.savefig('bp_size2.png', bbox_inches='tight', dpi=300)
+plt.savefig('bp_size1.png', bbox_inches='tight', dpi=300)
+#plt.savefig('bp_size2.png', bbox_inches='tight', dpi=300)
