@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=1.5in]{geometry}
 \setlength{\parindent}{0ex}
 \setlength{\parskip}{0.5ex}
 \usepackage{xcolor}
@@ -8,80 +8,102 @@
 
 \usepackage{titlesec}
 \setcounter{secnumdepth}{0}
+\titlespacing*{\section}{-0.75in}{0ex}{0ex}
+\titlespacing*{\subsection}{-0.5in}{0ex}{0ex}
 
 \usepackage{enumitem}
 %\setlist[itemize]{%
-%\setitemize{noitemsep}
+\setitemize{%
+    label={\footnotesize$\bullet$}
+}
+\setdescription{%
+    style=nextline,
+    itemindent=0em,
+    leftmargin=2em,
+    }
+\renewcommand{\descriptionlabel}{%
+    \bfseries}
 
 \usepackage{hyperref}
 \definecolor{cobalt}{rgb}{0.0, 0.28, 0.67}
-\hypersetup{colorlinks=true,
-    urlcolor=cobalt,
-    linkcolor=black
-}
+\hypersetup{colorlinks=true, urlcolor=cobalt, linkcolor=black}
 \urlstyle{same}
 
 \begin{document}
 \section{Papers}
-\begin{itemize}
-    \item \href{http://arxiv.org/abs/1304.5439}
-        {Modeling the Line-of-Sight Integrated Emission in the Corona:
-        Implications for Coronal Heating}
-        - Viall and Klimchuk
-    \item \href{http://arxiv.org/abs/0903.3546}
-        {Alfv\'en waves in the lower solar atmosphere}\\
-        - Jess, 2009
-    \item \href{https://arxiv.org/abs/1208.4693}
-        {Solar Force-free magnetic fields}\\
-        - Thomas Weigelmann
-    \item \href{https://arxiv.org/abs/0910.0962}
-        {The role of torsional Alfv\'en waves in coronal heating}\\
-        - P. Antolin, K. Shibata
-    \item \href{http://link.springer.com/article/10.1007\%2Fs11207-007-9029-z}
-        {Present and Future Observing Trends in Atmospheric Magnetoseismology}\\
-    \item \href{http://rsta.royalsocietypublishing.org/content/370/1970/3193}
-        {Magnetohydrodynamic waves and coronal seismology: an overview of recent results}\\
-        - Ineke De Moortel, Valery M. Nakariakov
-    \item \href{http://arxiv.org/abs/1509.05519}
-        {Decayless low-amplitude kink oscillations: a common phenomenon in the solar corona?}
-    \item \href{http://adsabs.harvard.edu/abs/2016A\%26A...585L...6P}
-        {Damping profile of standing kink oscillations observed by SDO/AIA}
-    \item \href{http://adsabs.harvard.edu/abs/1981ApJ...245L.123N}
-        {The detection of mesogranulation on the sun}
-        the first to detect structure between granule
-        and supergranule size scales.
-    \item {Magnetohydrodynamics of the Sun}
+\subsection{Granular structure}
+\begin{description}
+    \item [{Magnetohydrodynamics of the Sun}]
         Article review type book. Chapter 1, section 4 has some useful
         information on granules, mesogranules, and supergranules.
         Probably wouldn't cite the book in a paper; use the papers referenced
         instead.
-    \item \href{http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:0902.2299}
-        {Mesoscale dynamics on the Sun's surface from HINODE
-        observations}
-    \item \href{http://cdsads.u-strasbg.fr/abs/1989ApJ...336..475T}
-        {Statistical properties of solar granulation derived
-        from the SOUP instrument on Spacelab 2}
-        Cited by Priest, having something to do with the motions of granules and supergranules.
-    \item \href{http://cdsads.u-strasbg.fr/abs/2000SoPh..193..313S}
-        {Supergranule and mesogranule evolution}
-        Cited by Priest, along with November when
-        discussing the difficulties of observing mesogranulation.
-    \item \href{http://cdsads.u-strasbg.fr/abs/1964ApJ...140.1120S}
-        {Velocity fields in the solar atmosphere. III.
-        Large-Scale Motions, the Chromospheric Network, and Magnetic Fields}
-        - Priest
-        page 22, autocorrelation method for finding mean size of supergranules.
-    \item \href{http://cdsads.u-strasbg.fr/abs/1997ApJ...481..988H}
-        {The distribution of cell sizes of the Solar Chromospheric Network}
+    \item [\href{http://cdsads.u-strasbg.fr/abs/1997ApJ...481..988H}
+        {The distribution of cell sizes of the Solar Chromospheric Network}]
         from Priest, page 22, ``basin-finding'' algorithm for finding
         supergranules.
-    \item \href{http://cdsads.u-strasbg.fr/abs/2008A\%26A...479L..17R}
-        {Solar supergranulation revealed by granule tracking}
+    \item [\href{http://cdsads.u-strasbg.fr/abs/2008A\%26A...479L..17R}
+        {Solar supergranulation revealed by granule tracking}]
         Priest, page 22, granule tracking.
-    \item \href{http://cdsads.u-strasbg.fr/abs/2012SoPh..275...17L}
-            {The (AIA) on (SDO)}
+    \item [\href{http://cdsads.u-strasbg.fr/abs/1989ApJ...336..475T}
+        {Statistical properties of solar granulation derived
+        from the SOUP instrument on Spacelab 2}]
+        Cited by Priest, having something to do with the motions of granules and supergranules.
+    \item [\href{http://cdsads.u-strasbg.fr/abs/2000SoPh..193..313S}
+        {Supergranule and mesogranule evolution}]
+        Cited by Priest, along with November when
+        discussing the difficulties of observing mesogranulation.
+    \item [\href{http://adsabs.harvard.edu/cgi-bin/bib_query?arXiv:0902.2299}
+        {Mesoscale dynamics on the Sun's surface from HINODE
+        observations}]
+    \item [\href{http://adsabs.harvard.edu/abs/1981ApJ...245L.123N}
+        {The detection of mesogranulation on the sun}]
+        the first to detect structure between granule
+        and supergranule size scales.
+\end{description}
+\subsection{Alfv\'en waves}
+\begin{description}
+    \item [\href{http://arxiv.org/abs/0903.3546}
+        {Alfv\'en waves in the lower solar atmosphere}
+        - Jess, 2009]
+    \item [\href{https://arxiv.org/abs/0910.0962}
+        {The role of torsional Alfv\'en waves in coronal heating}]
+        - P. Antolin, K. Shibata
+\end{description}
+\subsection{Instrumentation}
+\begin{description}
+    \item [\href{http://cdsads.u-strasbg.fr/abs/2012SoPh..275...17L}
+            {The (AIA) on (SDO)}]
             Obviously$\ldots$ AIA info.
-\end{itemize}
+\end{description}
+\subsection{Coronal bright points}
+\subsection{Coronal seismology}
+\begin{description}
+    \item [\href{http://link.springer.com/article/10.1007\%2Fs11207-007-9029-z}
+        {Present and Future Observing Trends in Atmospheric Magnetoseismology}]
+    \item [\href{http://arxiv.org/abs/1304.5439}
+        {Modeling the Line-of-Sight Integrated Emission in the Corona:
+        Implications for Coronal Heating}
+        - Viall and Klimchuk]
+    \item [\href{http://rsta.royalsocietypublishing.org/content/370/1970/3193}
+        {Magnetohydrodynamic waves and coronal seismology: an overview of recent results}]
+        - Ineke De Moortel, Valery M. Nakariakov
+    \item [\href{http://arxiv.org/abs/1509.05519}
+        {Decayless low-amplitude kink oscillations: a common phenomenon in the solar corona?}]
+    \item [\href{http://adsabs.harvard.edu/abs/2016A\%26A...585L...6P}
+        {Damping profile of standing kink oscillations observed by SDO/AIA}]
+\end{description}
+\subsection{Other}
+\begin{description}
+    \item [\href{https://arxiv.org/abs/1208.4693}
+        {Solar Force-free magnetic fields}]
+        - Thomas Weigelmann
+    \item [\href{http://cdsads.u-strasbg.fr/abs/1964ApJ...140.1120S}
+        {Velocity fields in the solar atmosphere. III.
+        Large-Scale Motions, the Chromospheric Network, and Magnetic Fields}]
+        - Priest
+        page 22, autocorrelation method for finding mean size of supergranules.
+\end{description}
 
 \section{Other links}
 \begin{itemize}
@@ -91,4 +113,5 @@
 \end{itemize}
 
 %\bibliography{reffile}
+%\end{flushleft}
 \end{document}
