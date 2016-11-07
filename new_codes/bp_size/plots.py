@@ -54,6 +54,6 @@ cbar.set_label('timelag [image, with cadence = 12 s]', rotation=270)
 #cbar.set_ticklabels(np.arange(min(t),max(t)+step,0.5*step))
 #cbar.ax.set_xticklabels(['Low', 'Medium', 'High'])  # horizontal colorbar
 
-#plt.show(block=False)
-plt.savefig('bp_size1.png', bbox_inches='tight', dpi=300)
+plt.show(block=False)
+#plt.savefig('bp_size1.png', bbox_inches='tight', dpi=300)
 #plt.savefig('bp_size2.png', bbox_inches='tight', dpi=300)
