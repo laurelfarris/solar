@@ -11,21 +11,28 @@ from matplotlib.ticker import FormatStrFormatter
 #matplotlib.rc('text', usetex=True)
 #fig, ax = plt.subplots(figsize=(8,12), nrows=3, ncols=2, sharex=True, sharey=True)
 
-fig = plt.figure(figsize=(8,10))
+fig = plt.figure(figsize=(10,8))
 fontsize=14
 waves = ['94', '131', '171', '193', '211', '304'] #, '335']
+x = [0.10, 0.35, 0.65, 0.10, 0.35, 0.65]
+y = [0.10, 0.10, 0.10, 0.45, 0.45, 0.45]
+
 for i in range(0, len(waves)):
     f = open(waves[i] + '_bp_sizes.dat')
     x, y, r, cor, t = np.loadtxt(f, unpack=True)
-    ax = fig.add_subplot(3,2,i+1)
+    r = r*0.6
+    r = r.astype(float)
+
+    ax = fig.add_subplot(2,3,i+1)
     m = ax.scatter(r, cor, c=t, vmin=min(t), vmax=max(t),
-                    cmap='viridis', s=2, lw=0)
+                    cmap='viridis', s=4, lw=0)
     #ax.axis('tight')
+    ax.set_xlim(left=0, right=0.5*max(r))
+    ax.set_ylim(bottom=0.5, top=1)
+    ax.set_aspect(40./1.)
     '''
-    ax.set_xlim(left=-5, right=max(r))
-    ax.set_ylim(bottom=0.6, top=1)
     '''
-    ax.text(68, 0.93, waves[i] + ' $\mathrm{\AA{}}$', ha='right')
+    ax.text(0.9, 0.9, waves[i] + ' $\mathrm{\AA{}}$', ha='center', transform=ax.transAxes )
     ax.minorticks_on()
     ax.tick_params(axis='both', which='minor', direction='in', length=4)
     ax.tick_params(axis='both', which='major', direction='in', length=6)
@@ -43,13 +50,16 @@ for i in range(0, len(waves)):
     ax.set_yticklabels(np.arange(0,1,0.1),fontsize=12)
     '''
 
-fig.text(0.5, 0.024, 'radius [pixels]', ha='center', fontsize=fontsize)
+fig.text(0.5, 0.024, 'radius [arcseconds] (1" = ~435 km)', ha='center', fontsize=fontsize)
 fig.text(0.03, 0.5, 'maximum cross-correlation', va='center', rotation='vertical', fontsize=fontsize)
-fig.subplots_adjust(left=0.1, right=0.85, bottom=0.08, top=0.95, wspace=0.2, hspace=0.2)
-cax = fig.add_axes([0.90, 0.05, 0.02, 0.90])
-#step=30
-cbar = fig.colorbar(m, cax=cax)
-cbar.set_label('timelag [image, with cadence = 12 s]', rotation=270)
+
+#fig.subplots_adjust(left=0.1, right=0.95, bottom=0.08, top=0.75, wspace=0.1, hspace=0.1)
+fig.subplots_adjust(bottom=0.1, top=0.75)
+
+''' color bar '''
+cax = fig.add_axes([0.1, 0.90, 0.80, 0.03])
+cbar = fig.colorbar(m, cax=cax, orientation='horizontal')
+cbar.set_label('timelag [image, with cadence = 12 s]', style='italic', va='top')
 #cbar.set_ticks(np.arange(min(t),max(t)+step,step))
 #cbar.set_ticklabels(np.arange(min(t),max(t)+step,0.5*step))
 #cbar.ax.set_xticklabels(['Low', 'Medium', 'High'])  # horizontal colorbar
