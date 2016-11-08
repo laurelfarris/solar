@@ -1,1 +1,0 @@
-/home/users/laurel07/research/writeups/apj.bst
