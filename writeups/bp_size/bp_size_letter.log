@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2015.11.14)  22 AUG 2016 16:22
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2015.11.14)  10 NOV 2016 14:01
 entering extended mode
  %&-line parsing enabled.
 **bp_size_letter
@@ -48,7 +48,7 @@ Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 (/usr/share/texmf/tex/latex/graphics/graphics.sty
 Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf/tex/fontinst/base/trig.sty
+(/usr/share/texmf/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
 (/usr/share/texmf/tex/latex/config/graphics.cfg
@@ -175,33 +175,43 @@ Overfull \hbox (10.63483pt too wide) in paragraph at lines 57--72
  [][] 
  []
 
-(./bp_size_letter.bbl [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+<images.png, id=1, 624.8946pt x 482.5227pt>
+File: images.png Graphic file (type png)
+ <use images.png>
+<cc.png, id=2, 624.8946pt x 482.5227pt>
+File: cc.png Graphic file (type png)
+ <use cc.png>
+<tt.png, id=3, 624.8946pt x 482.5227pt>
+File: tt.png Graphic file (type png)
+ <use tt.png> (./bp_size_letter.bbl
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
-])
-[2
+]) [2
 
-] (./bp_size_letter.aux) ) 
+ <./images.png (PNG copy)>] [3 <./cc.png (PNG copy)>] [4 <./tt.png (PNG copy)>]
+
+(./bp_size_letter.aux) ) 
 Here is how much of TeX's memory you used:
- 1863 strings out of 256214
- 21195 string characters out of 1916999
+ 1877 strings out of 256214
+ 21335 string characters out of 1916999
  75874 words of memory out of 1500000
- 5138 multiletter control sequences out of 10000+200000
+ 5151 multiletter control sequences out of 10000+200000
  12013 words of font info for 49 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
  32i,11n,26p,580b,242s stack positions out of 5000i,500n,6000p,200000b,15000s
-</usr/share/texmf/fonts/type1/bluesky/cm/cmbx10.pfb><
-/usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb></usr/share/texmf/fonts/type
-1/bluesky/cm/cmbxti10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pfb></
-usr/share/texmf/fonts/type1/bluesky/cm/cmr12.pfb></usr/share/texmf/fonts/type1/
-bluesky/cm/cmr6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/sha
-re/texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/
-cm/cmr9.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti10.pfb></usr/share/tex
-mf/fonts/type1/bluesky/cm/cmti9.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cm
-tt10.pfb>
-Output written on bp_size_letter.pdf (2 pages, 76341 bytes).
+</usr/share/texmf/fonts/type1/bluesky/cm/cmbx10.pfb></u
+sr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb></usr/share/texmf/fonts/type1/
+bluesky/cm/cmbxti10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pfb></us
+r/share/texmf/fonts/type1/bluesky/cm/cmr12.pfb></usr/share/texmf/fonts/type1/bl
+uesky/cm/cmr6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share
+/texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/cm
+/cmr9.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti10.pfb></usr/share/texmf
+/fonts/type1/bluesky/cm/cmti9.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt
+10.pfb>
+Output written on bp_size_letter.pdf (4 pages, 2131727 bytes).
 PDF statistics:
- 57 PDF objects out of 1000 (max. 8388607)
+ 66 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

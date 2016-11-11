@@ -24,6 +24,29 @@
 \section{Conclusions}
 \section{Future work}
 
-\bibliography{reffile}
-\end{document}
 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c c c}
+        \hline\hline
+        Heading1 & heading2 & heading3 \\
+        \hline
+        item1 & item2 & item3 \\
+    \end{tabular}
+    \caption{caption words}
+    \label{labelname}
+\end{table}
+
+\begin{figure}[htb!]  % here, top, bottom, ignore latex's determined location
+%\begin{figure*}  % Add '*' to have figure span both columns in two-column style.
+    \figurenum{text}
+    \epsscale{num}
+    \plotone{file}
+    \plottwo{file1}{file2}  % side-by-side figures
+    \caption{text}
+\end{figure}
+
+
+\bibliography{reffile}
+
+\end{document}
