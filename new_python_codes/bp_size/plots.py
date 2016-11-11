@@ -26,8 +26,8 @@ for i in range(0, len(waves)):
     '''
 
     ax = fig.add_subplot(2,3,i+1)
-    #m = ax.scatter(r, cor, c=t, vmin=min(t), vmax=max(t), cmap='viridis', s=4, lw=0)
-    m = ax.scatter(r, cor, c=t, vmin=-50, vmax=50, cmap='viridis', s=4, lw=0)
+    m = ax.scatter(r, cor, c=t, vmin=min(t), vmax=max(t), cmap='viridis', s=4, lw=0)
+    #m = ax.scatter(r, cor, c=t, vmin=-50, vmax=50, cmap='viridis', s=4, lw=0)
     #ax.axis('tight')
     ax.set_xlim(left=0, right=0.5*max(r))
     ax.set_ylim(bottom=0.5, top=1)
@@ -67,5 +67,5 @@ cbar.set_label('timelag [image, with cadence = 12 s]', style='italic', va='top')
 #cbar.ax.set_xticklabels(['Low', 'Medium', 'High'])  # horizontal colorbar
 
 #plt.show(block=False)
-plt.savefig('bp_size1.png', bbox_inches='tight', dpi=300)
+plt.savefig('figure_4.png', bbox_inches='tight', dpi=300)
 #plt.savefig('bp_size2.png', bbox_inches='tight', dpi=300)
