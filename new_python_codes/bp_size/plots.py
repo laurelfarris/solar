@@ -20,14 +20,17 @@ y = [0.10, 0.10, 0.10, 0.45, 0.45, 0.45]
 for i in range(0, len(waves)):
     f = open(waves[i] + '_bp_sizes.dat')
     x, y, r, cor, t = np.loadtxt(f, unpack=True)
-    '''
-    r = r*0.6
-    r = r.astype(float)
-    '''
+    t_orig = len(t)
+
+    j = 0
+    while j < len(t):
+        if abs(t[j]) > 50:
+            t = np.delete(t, j)
+            cor = np.delete(cor, j)
+        j += 1
 
     ax = fig.add_subplot(2,3,i+1)
     m = ax.scatter(r, cor, c=t, vmin=min(t), vmax=max(t), cmap='viridis', s=4, lw=0)
-    #m = ax.scatter(r, cor, c=t, vmin=-50, vmax=50, cmap='viridis', s=4, lw=0)
     #ax.axis('tight')
     ax.set_xlim(left=0, right=0.5*max(r))
     ax.set_ylim(bottom=0.5, top=1)
@@ -66,6 +69,6 @@ cbar.set_label('timelag [image, with cadence = 12 s]', style='italic', va='top')
 #cbar.set_ticklabels(np.arange(min(t),max(t)+step,0.5*step))
 #cbar.ax.set_xticklabels(['Low', 'Medium', 'High'])  # horizontal colorbar
 
-#plt.show(block=False)
-plt.savefig('figure_4.png', bbox_inches='tight', dpi=300)
+plt.show(block=False)
+#plt.savefig('figure_4.png', bbox_inches='tight', dpi=300)
 #plt.savefig('bp_size2.png', bbox_inches='tight', dpi=300)
