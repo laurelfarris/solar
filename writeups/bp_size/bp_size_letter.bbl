@@ -1,6 +1,9 @@
 \begin{thebibliography}{}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
+\bibitem[{{Alipour} \& {Safari}(2015)}]{Alipour}
+{Alipour}, N., \& {Safari}, H. 2015, \apj, 807, 175
+
 \bibitem[{{Howard} \& {Stenflo}(1972)}]{Howard}
 {Howard}, R., \& {Stenflo}, J.~O. 1972, \solphys, 22, 402
 

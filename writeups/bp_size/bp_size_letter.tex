@@ -38,68 +38,81 @@ the form of coronal bright points. The cross-sectional area of these BPs is
 known to increase in height as the density decreases and temperature increases
 (source).
 
+\cite{Alipour} developed an algorithm to locate BPs in the corona, using size determined
+by intensity as part of the criteria for distinguishing BPs from other features,
+such as top-down views of coronal loops or nanoflares.
+
 
 \section{Data}\label{data}
-This analysis was carried out on data from AIA/\textit{SDO} (\cite{Lemen}).
+This analysis was carried out using data from AIA/\textit{SDO}.
 A grayscale image of the full disk at the start of the time series () is shown
-in figure %\ref{}.
-A single coronal bright point was located and analyzed in each passband, of
-which there were seven total. Each of these wavelengths corresponds to emission
-from a different ion, hence a different temperature/height above the solar
+in figure \ref{full}.
+A single coronal bright point was located and analyzed in each passband.
+Each of these wavelengths corresponds to emission
+from a different ion, hence a different temperature/height above the
 photosphere.
-An image of the bright point in each of the wavelengths is shown in figure
-%\ref{},
-also at the beginning of the time series.
 
-The relevant values for each passband are given in table \ref{aia}.
+The relevant values for each passband are given in table \ref{temps}.
 \begin{table}[h]
 \centering
-    \begin{tabular}{c c c}
+    \begin{tabular}{l l}
         \hline\hline
-        Wavelength [\AA{}] & Temperature [K] & Height [km]\\
+        Wavelength [\AA{}] & Temperature [K] \\
         \hline
-        94 & $10^{6}$ & 11\\
-        131 & $10^{6}$ & 11\\
-        171 & $10^{6}$ & 11\\
-        193 & $10^{6}$ & 11\\
-        211 & $10^{6}$ & 11\\
-        304 & $10^{6}$ & 11\\
-        335 & $10^{6}$ & 11\\
-        1600 & $10^{6}$ & 11\\
-        1700 & $10^{6}$ & 11\\
-        4500 & $10^{6}$ & 11\\
+        94 & $10^{6.8}$ \\
+        131 & $10^{5.6}, 10^{7.0}$ \\
+        171 & $10^{5.8}$ \\
+        193 & $10^{6.2}, 10^{7.3}$ \\
+        211 & $10^{6.3}$ \\
+        304 & $10^{4.7}$ \\
+        335 & $10^{6.4}$ \\
     \end{tabular}
-\caption{stuff}
-\label{aia}
+\caption{Characteristic temperatures corresponding to the wavelengths observed
+    in emission in the solar corona (taken from \cite{Lemen}).}
+\label{temps}
 \end{table}
 
 \begin{figure*}[htb!]
-    %\includegraphics[width=\textwidth]{/solarstorm/laurel07/Research_repo/new_python_codes/bp_size/full_bp.png}
-    \includegraphics[width=\textwidth]{images.png}
+    \includegraphics[width=\textwidth]{Figures/images.png}
     \caption{Images of the BP in six different AIA wavelengths.}
+    \label{full}
 \end{figure*}
 
 \begin{figure*}[htb!]
-    \includegraphics[width=\textwidth]{cc.png}
-    \caption{Cross-correlation}
+    \includegraphics[width=\textwidth]{Figures/cc_all.png}
+    \caption{Images showing the highest cross-correlation value for each pixel. }
+    \label{cc_all}
 \end{figure*}
 
 \begin{figure*}[htb!]
-    \includegraphics[width=\textwidth]{tt.png}
-    \caption{Timelag}
+    \includegraphics[width=\textwidth]{Figures/tt_all.png}
+    \caption{Images showing the timelag corresponding to the correlation values
+        illustrated in figure \ref{cc_all}.}
+    \label{tt_all}
 \end{figure*}
 
 \begin{figure*}[htb!]
-    \includegraphics[width=\textwidth]{figure_4.png}
-    \caption{The highest cross-correlation value of each pixel is plotted against
-        its distance from the center pixel. The color indicates the timelag at which
-        the highest cross-correlation occurred.}
+    \includegraphics[width=\textwidth]{Figures/cc_images.png}
+    \caption{Cross-correlation images scaled to show only values higher than 0.5.}
+\end{figure*}
+
+\begin{figure*}[htb!]
+    \includegraphics[width=\textwidth]{Figures/tt_images.png}
+    \caption{Timelag corresponding to the cross-correlation values higher than 0.5.}
+\end{figure*}
+
+\begin{figure*}[htb!]
+    \includegraphics[width=\textwidth]{Figures/cc_tt_plot.png}
+    \caption{The highest cross-correlation value of each pixel is plotted as a function
+        of its distance from the center pixel. The color indicates the timelag
+        corresponding to the maximum cross-correlation for that pixel.}
     \label{tau_all}
 \end{figure*}
 
 \begin{figure*}[htb!]
-    \includegraphics[width=\textwidth]{figure_5.png}
-    \caption{Same as figure \ref{tau_all}, but with two thirds of the timelag cut out.}
+    \includegraphics[width=\textwidth]{Figures/cc_tt_plot_scaled.png}
+    \caption{Same as figure \ref{tau_all}, but with two thirds of the timelag cut out
+        at both ends.}
 \end{figure*}
 
 \section{Analysis}\label{analysis}
@@ -108,6 +121,9 @@ of the size of the BP. Here the estimate was taken a step further, using the
 cross-correlation of the BP pixels through the entire time series.
 
 \section{Results}\label{results}
+After analysis of a single BP in the solar corona, the estimated size is...
+
+
 \section{Conclusion}\label{conclusion}
 
 \bibliography{reffile}
