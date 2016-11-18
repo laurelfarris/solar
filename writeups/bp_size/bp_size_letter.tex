@@ -20,38 +20,43 @@ multi-wavelength images from AIA/\textit{SDO}}
 \keywords{Sun: corona{-}Sun: bright points{-}}
 
 \section{Introduction}\label{intro}
-
-Bright points are located in the junctions between supergranules in the solar
-photosphere. These are thought to be a result of magnetic flux tubes moving to
-these junctions after rising to the surface and being jostled about by
-advection (source: class notes?). Though they only cover about 1.6 \% of the
-visible surface (\cite{Srivastava}), bright points (together with sunspots)
+It is currently thought that after magnetic flux tubes rise from the tachocline
+of the sun (between the convection and radiative zones) to the photosphere, they
+are moved across the photosphere by the process of advection to the junctions
+between supergranules (source?). There they are observed as bright points (BPs).
+Though they only cover about 1.6 \% of the
+photosphere (\cite{Srivastava}), BPs (together with sunspots)
 contribute over 90\% of the total magnetic flux (\cite{Howard}).
-
 Over the course of the solar cycle, they can contribute significantly to the
 global intensity variation of the sun, particularly in the ultraviolet
-regime (\cite{Riethmuller}). UV flux from bright points can be studied using
-their coronal counterparts.
+regime (\cite{Riethmuller}).
 
-These bright points can be seen in the upper layers of the solar atmosphere in
-the form of coronal bright points. The cross-sectional area of these BPs is
-known to increase in height as the density decreases and temperature increases
-(source).
+These BPs can be seen in the upper layers of the solar atmosphere in the form
+of coronal BPs. The cross-sectional area of these BPs is known to increase with
+height above the photosphere as the density decreases and temperature increases
+(source?).
 
+Several techniques for determining the size of coronal BPs have been investigated
+in the literature.
 \cite{Alipour} developed an algorithm to locate BPs in the corona, using size determined
 by intensity as part of the criteria for distinguishing BPs from other features,
 such as top-down views of coronal loops or nanoflares.
 
+The goal for the project discussed in this Letter was to determine size in another
+way, using the cross-correlation between the pixels in and around the visible
+area occupied by the BP. The data is described in \S{} \ref{data},
+the analysis is discussed in \S{} \ref{analysis},
+and conclusions are in \S{} \ref{conclusion}.
+
 
 \section{Data}\label{data}
-This analysis was carried out using data from AIA/\textit{SDO}.
-A grayscale image of the full disk at the start of the time series () is shown
-in figure \ref{full}.
-A single coronal bright point was located and analyzed in each passband.
-Each of these wavelengths corresponds to emission
-from a different ion, hence a different temperature/height above the
+This analysis was carried out using multi-wavelength data from AIA/\textit{SDO}
+spanning one hour on June 1, 2012 from 13:00:00 to 13:59:59, at a cadence of 12
+seconds.
+Each EUV passband corresponds to emission
+from different transitions of ion species in the corona, each of which takes
+place at different temperatures, and hence different heights, above the
 photosphere.
-
 The relevant values for each passband are given in table \ref{temps}.
 \begin{table}[h]
 \centering
@@ -72,6 +77,10 @@ The relevant values for each passband are given in table \ref{temps}.
 \label{temps}
 \end{table}
 
+%A grayscale image of the full disk at the beginning of the time series is shown in figure \ref{full}.
+A single BP from a coronal hole located in the full disk was selected for analysis.
+Grayscale images showing this BP in each passband are shown in figure \ref{full}.
+
 \begin{figure*}[htb!]
     \includegraphics[width=\textwidth]{Figures/images.png}
     \caption{Images of the BP in six different AIA wavelengths.}
@@ -79,13 +88,18 @@ The relevant values for each passband are given in table \ref{temps}.
 \end{figure*}
 
 \section{Analysis}\label{analysis}
-The intensity of each BP as a function of radius gives a rough visual estimate
-of the size of the BP.
+The intensity of each BP as a function of radius gives a visual estimate
+of the size of the BP. For comparison, the intensity of the first image in each
+passband is plotted as a function of radial distance from the center pixel in figures
+\ref{intensity_1} and \ref{intensity_2}.
+
 For this project, the size was estimated by running a cross-correlation between
 a pixel roughly in the center of the BP and the remaining pixels over the
 100 $\times$ 100 pixel$^{2}$ area through the full hour long time series.
-The central pixel was determined by locating the brightest pixel in the center
-of the BP from the first image in the time series.
+The central pixel was arbitrarily determined by locating the brightest pixel in the center
+of the BP from the first image in the time series. The cross-correlation analysis
+helps to determine what parts of the feature are moving together as a single
+physical structure.
 
 \section{Results}\label{results}
 Images illustrating the highest cross-correlation value of each pixel and the
@@ -100,8 +114,8 @@ As \cite{Alipour} noted, the BP structure is most evident for the
 The 211\AA{} data is particularly notable as it shows strong correlation values
 at two points to the right of where the BP appears visually in figure \ref{full}.
 A movie showing all images from this wavelength (\cite{ssw}) revealed a flash
-of emission around the ?th image, which matches the timelag at which the high
-correlation values occurred.
+of emission around the ?th image.
+%which matches the timelag at which the high correlation values occurred.
 
 \begin{figure*}[htb!]
     \includegraphics[width=\textwidth]{Figures/cc_all.png}
@@ -112,7 +126,9 @@ correlation values occurred.
 \begin{figure*}[htb!]
     \includegraphics[width=\textwidth]{Figures/tt_all.png}
     \caption{Images showing the timelag corresponding to the correlation values
-        illustrated in figure \ref{cc_all}.}
+        illustrated in figure \ref{cc_all}. (This is not the correct image; I accidently
+        overwrote the correct one, but can't re-create it because IDL is giving me
+        syntax errors on my function keywords for no apparent reason.)}
     \label{tt_all}
 \end{figure*}
 
@@ -129,6 +145,20 @@ correlation values occurred.
 \end{figure*}
 
 \begin{figure*}[htb!]
+    \includegraphics[width=\textwidth]{Figures/intensity_1.png}
+    \caption{Intensity of each pixel is plotted as a function of radius for each
+        passband.}
+    \label{intensity_1}
+\end{figure*}
+
+\begin{figure*}[htb!]
+    \includegraphics[width=\textwidth]{Figures/intensity_2.png}
+    \caption{Same as figure \ref{intensity_1}, but with half the radius range
+        cut off to better view the values around the main BP.}
+    \label{intensity_2}
+\end{figure*}
+
+\begin{figure*}[htb!]
     \includegraphics[width=\textwidth]{Figures/cc_tt_plot.png}
     \caption{The highest cross-correlation value of each pixel is plotted as a function
         of its distance from the center pixel. The color indicates the timelag
@@ -138,7 +168,7 @@ correlation values occurred.
 
 \begin{figure*}[htb!]
     \includegraphics[width=\textwidth]{Figures/cc_tt_plot_scaled.png}
-    \caption{Same as figure \ref{tau_all}, but with two thirds of the timelag cut out
+    \caption{Same as figure \ref{tt_all_plot}, but with two thirds of the timelag cut out
         at both ends.}
     \label{tt_plot}
 \end{figure*}
