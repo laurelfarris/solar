@@ -78,6 +78,31 @@ The relevant values for each passband are given in table \ref{temps}.
     \label{full}
 \end{figure*}
 
+\section{Analysis}\label{analysis}
+The intensity of each BP as a function of radius gives a rough visual estimate
+of the size of the BP.
+For this project, the size was estimated by running a cross-correlation between
+a pixel roughly in the center of the BP and the remaining pixels over the
+100 $\times$ 100 pixel$^{2}$ area through the full hour long time series.
+The central pixel was determined by locating the brightest pixel in the center
+of the BP from the first image in the time series.
+
+\section{Results}\label{results}
+Images illustrating the highest cross-correlation value of each pixel and the
+timelag corresponding to that correlation value are shown in figures \ref{cc_all}
+and \ref{tt_all}. The correlation was cut off at 0.5 and rescaled to obtain a
+better illustration of the structure of the BP. These images are shown in
+figures \ref{cc} and \ref{tt}.
+
+As \cite{Alipour} noted, the BP structure is most evident for the
+131\AA{}, 193\AA{}, and 211\AA{} images.
+
+The 211\AA{} data is particularly notable as it shows strong correlation values
+at two points to the right of where the BP appears visually in figure \ref{full}.
+A movie showing all images from this wavelength (\cite{ssw}) revealed a flash
+of emission around the ?th image, which matches the timelag at which the high
+correlation values occurred.
+
 \begin{figure*}[htb!]
     \includegraphics[width=\textwidth]{Figures/cc_all.png}
     \caption{Images showing the highest cross-correlation value for each pixel. }
@@ -94,11 +119,13 @@ The relevant values for each passband are given in table \ref{temps}.
 \begin{figure*}[htb!]
     \includegraphics[width=\textwidth]{Figures/cc_images.png}
     \caption{Cross-correlation images scaled to show only values higher than 0.5.}
+    \label{cc}
 \end{figure*}
 
 \begin{figure*}[htb!]
     \includegraphics[width=\textwidth]{Figures/tt_images.png}
     \caption{Timelag corresponding to the cross-correlation values higher than 0.5.}
+    \label{tt}
 \end{figure*}
 
 \begin{figure*}[htb!]
@@ -106,22 +133,15 @@ The relevant values for each passband are given in table \ref{temps}.
     \caption{The highest cross-correlation value of each pixel is plotted as a function
         of its distance from the center pixel. The color indicates the timelag
         corresponding to the maximum cross-correlation for that pixel.}
-    \label{tau_all}
+    \label{tt_all_plot}
 \end{figure*}
 
 \begin{figure*}[htb!]
     \includegraphics[width=\textwidth]{Figures/cc_tt_plot_scaled.png}
     \caption{Same as figure \ref{tau_all}, but with two thirds of the timelag cut out
         at both ends.}
+    \label{tt_plot}
 \end{figure*}
-
-\section{Analysis}\label{analysis}
-The intensity of each BP as a function of radius gives a rough visual estimate
-of the size of the BP. Here the estimate was taken a step further, using the
-cross-correlation of the BP pixels through the entire time series.
-
-\section{Results}\label{results}
-After analysis of a single BP in the solar corona, the estimated size is...
 
 
 \section{Conclusion}\label{conclusion}
