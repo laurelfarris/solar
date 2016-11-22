@@ -1,8 +1,10 @@
 \documentclass[preprint2]{aastex}
 \usepackage{natbib}
-\usepackage{color}
+\usepackage{xcolor}
 \usepackage{booktabs}
 \bibliographystyle{apj}
+
+\pagenumbering{gobble}
 
 \shorttitle{Bright Point Size}
 \shortauthors{Farris}
@@ -60,31 +62,43 @@ photosphere.
 The relevant values for each passband are given in table \ref{temps}.
 \begin{table}[h]
 \centering
-    \begin{tabular}{l l}
+    \begin{tabular}{l l l}
         \hline\hline
-        Wavelength [\AA{}] & Temperature [K] \\
+        Wavel. [\AA{}] & log(T) [K] & Ion(s) \\
         \hline
-        94 & $10^{6.8}$ \\
-        131 & $10^{5.6}, 10^{7.0}$ \\
-        171 & $10^{5.8}$ \\
-        193 & $10^{6.2}, 10^{7.3}$ \\
-        211 & $10^{6.3}$ \\
-        304 & $10^{4.7}$ \\
-        335 & $10^{6.4}$ \\
+        94 & 6.8 & Fe {\small XVIII} \\
+        131 & 5.6, 7.0 & Fe {\small VIII, XXI} \\
+        171 & 5.8 & Fe {\small IX} \\
+        193 & 6.2, 7.3 & Fe {\small XII, XXIV} \\
+        211 & 6.3 & Fe {\small XIV} \\
+        304 & 4.7 & He {\small II} \\
+        335 & 6.4 & Fe {\small XVI} \\
     \end{tabular}
 \caption{Characteristic temperatures corresponding to the wavelengths observed
-    in emission in the solar corona (taken from \cite{Lemen}).}
+    in emission in the solar corona (from \cite{Lemen}).}
 \label{temps}
 \end{table}
 
-%A grayscale image of the full disk at the beginning of the time series is shown in figure \ref{full}.
+A grayscale image of the full disk at the beginning of the time series for each
+bandpass is shown in figure \ref{full}.
 A single BP from a coronal hole located in the full disk was selected for analysis.
-Grayscale images showing this BP in each passband are shown in figure \ref{full}.
+Grayscale images showing this BP in each passband are shown in figure \ref{bp_images}.
+
+\begin{figure*}[htb!]
+    \includegraphics[width=\textwidth]{Figures/full.png}
+    \caption{Full disk showing the relative intensity at the start of the time
+        series for each AIA bandpass used in this study.}
+    \label{full}
+\end{figure*}
 
 \begin{figure*}[htb!]
     \includegraphics[width=\textwidth]{Figures/images.png}
-    \caption{Images of the BP in six different AIA wavelengths.}
-    \label{full}
+    \caption{Images of the BP in six different AIA wavelengths. The pixel coordinates
+        are given relative to the full disk shown in figure \ref{full}.
+        The location of the BP appears to shift from one bandpass to next, which
+        may indicate a structure that is not completely straight, or a possible shift
+        in the data itself.}
+    \label{bp_images}
 \end{figure*}
 
 \section{Analysis}\label{analysis}
@@ -95,13 +109,15 @@ passband is plotted as a function of radial distance from the center pixel in fi
 
 For this project, the size was estimated by running a cross-correlation between
 a pixel roughly in the center of the BP and the remaining pixels over the
-100 $\times$ 100 pixel$^{2}$ area through the full hour long time series.
+100 $\times$ 100 pixel$^{2}$ area through the full time series.
 The central pixel was arbitrarily determined by locating the brightest pixel in the center
 of the BP from the first image in the time series. The cross-correlation analysis
-helps to determine what parts of the feature are moving together as a single
+helped to determine what parts of the feature were moving together as a single
 physical structure.
 
 \section{Results}\label{results}
+
+\subsection{Cross-correlation as a size indicator}
 Images illustrating the highest cross-correlation value of each pixel and the
 timelag corresponding to that correlation value are shown in figures \ref{cc_all}
 and \ref{tt_all}. The correlation was cut off at 0.5 and rescaled to obtain a
@@ -111,11 +127,25 @@ figures \ref{cc} and \ref{tt}.
 As \cite{Alipour} noted, the BP structure is most evident for the
 131\AA{}, 193\AA{}, and 211\AA{} images.
 
+\subsection{Variation in BP size with temperature}
+Even though the temperature of the corona increases with height from the transition
+region to wherever the corona actually ends (need source here), there is not necessarily
+a direct correlation between temperature and absolute height above the photosphere
+due to the variety of structures
+and overall inhomogeneity that exists in the solar atmosphere (\textcolor{red}{source}).
+However, the \emph{relative} height between each bandpass for a given structure is
+possible to determine, and is relevant to this study.
+
+\subsection{Extra emission in 211\AA{}}
 The 211\AA{} data is particularly notable as it shows strong correlation values
 at two points to the right of where the BP appears visually in figure \ref{full}.
+This could be the result of a jet of light emitted from the main structure, or a
+possible indicator of the main structure splitting into several tubes at the
+height where the 211 \AA{} emission is strongest.
 A movie showing all images from this wavelength (\cite{ssw}) revealed a flash
-of emission around the ?th image.
-%which matches the timelag at which the high correlation values occurred.
+of emission around the 45th image,
+which matches the timelag at which the high correlation values occurred as shown
+in figure \ref{closeup}.
 
 \begin{figure*}[htb!]
     \includegraphics[width=\textwidth]{Figures/cc_all.png}
@@ -126,9 +156,7 @@ of emission around the ?th image.
 \begin{figure*}[htb!]
     \includegraphics[width=\textwidth]{Figures/tt_all.png}
     \caption{Images showing the timelag corresponding to the correlation values
-        illustrated in figure \ref{cc_all}. (This is not the correct image; I accidently
-        overwrote the correct one, but can't re-create it because IDL is giving me
-        syntax errors on my function keywords for no apparent reason.)}
+        illustrated in figure \ref{cc_all}.}
     \label{tt_all}
 \end{figure*}
 
@@ -145,9 +173,22 @@ of emission around the ?th image.
 \end{figure*}
 
 \begin{figure*}[htb!]
+    \includegraphics[width=\textwidth]{Figures/im_211.png}
+    \caption{Images from the 211 \AA{} bandpass only, around the times when the
+        two jets of light appeared in the upper right region of the main body of the BP. }
+    \label{tt}
+\end{figure*}
+
+\begin{figure*}[htb!]
+    \includegraphics[width=\textwidth]{Figures/closeup_211.png}
+    \caption{Timelag at 211 \AA{} ``zoomed in'' around the two jets of light.}
+    \label{closeup}
+\end{figure*}
+
+\begin{figure*}[htb!]
     \includegraphics[width=\textwidth]{Figures/intensity_1.png}
     \caption{Intensity of each pixel is plotted as a function of radius for each
-        passband.}
+        passband. I have no idea what's going on with the 94\AA{} data.}
     \label{intensity_1}
 \end{figure*}
 
