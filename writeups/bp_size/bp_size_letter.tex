@@ -25,7 +25,7 @@ multi-wavelength images from AIA/\textit{SDO}}
 It is currently thought that after magnetic flux tubes rise from the tachocline
 of the sun (between the convection and radiative zones) to the photosphere, they
 are moved across the photosphere by the process of advection to the junctions
-between supergranules (source?). There they are observed as bright points (BPs).
+between supergranules (source?) and are observed as bright points (BPs).
 Though they only cover about 1.6 \% of the
 photosphere (\cite{Srivastava}), BPs (together with sunspots)
 contribute over 90\% of the total magnetic flux (\cite{Howard}).
@@ -60,11 +60,12 @@ from different transitions of ion species in the corona, each of which takes
 place at different temperatures, and hence different heights, above the
 photosphere.
 The relevant values for each passband are given in table \ref{temps}.
+
 \begin{table}[h]
 \centering
     \begin{tabular}{l l l}
         \hline\hline
-        Wavel. [\AA{}] & log(T) [K] & Ion(s) \\
+        Wavel. [\AA{}] & log(T) [K] & Ion \\
         \hline
         94 & 6.8 & Fe {\small XVIII} \\
         131 & 5.6, 7.0 & Fe {\small VIII, XXI} \\
@@ -117,10 +118,9 @@ physical structure.
 
 \section{Results}\label{results}
 
-\subsection{Cross-correlation as a size indicator}
 Images illustrating the highest cross-correlation value of each pixel and the
 timelag corresponding to that correlation value are shown in figures \ref{cc_all}
-and \ref{tt_all}. The correlation was cut off at 0.5 and rescaled to obtain a
+and \ref{tt_all}, respectively. The correlation was cut off at 0.5 and rescaled to obtain a
 better illustration of the structure of the BP. These images are shown in
 figures \ref{cc} and \ref{tt}.
 
@@ -147,10 +147,22 @@ of emission around the 45th image,
 which matches the timelag at which the high correlation values occurred as shown
 in figure \ref{closeup}.
 
+\subsection{Crossing time}
+A test on this method can be done by using the derived size and the timelag across
+the BP to calculate a velocity. In the corona, this should be close to the
+Alfv\'en velocity, around 1000 km s$^{-1}$. (With a cadence of 12 seconds, do
+we have enough sampling to do this?)
+
 \begin{figure*}[htb!]
-    \includegraphics[width=\textwidth]{Figures/cc_all.png}
+    \includegraphics[width=\textwidth]{Figures/BandWimages.png}
     \caption{Images showing the highest cross-correlation value for each pixel. }
     \label{cc_all}
+\end{figure*}
+
+\begin{figure*}[htb!]
+    \includegraphics[width=\textwidth]{Figures/cc_all.png}
+    \caption{Color images showing the highest cross-correlation value for each pixel. }
+    \label{cc_all_color}
 \end{figure*}
 
 \begin{figure*}[htb!]
@@ -176,7 +188,7 @@ in figure \ref{closeup}.
     \includegraphics[width=\textwidth]{Figures/im_211.png}
     \caption{Images from the 211 \AA{} bandpass only, around the times when the
         two jets of light appeared in the upper right region of the main body of the BP. }
-    \label{tt}
+    \label{211_images}
 \end{figure*}
 
 \begin{figure*}[htb!]

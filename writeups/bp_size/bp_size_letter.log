@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2015.11.14)  21 NOV 2016 13:28
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2015.11.14)  28 NOV 2016 12:24
 entering extended mode
  %&-line parsing enabled.
 **bp_size_letter
@@ -151,7 +151,7 @@ Package: booktabs 2005/03/16 v1.6180 publication quality tables
 \@thisrulewidth=\dimen127
 ) (./bp_size_letter.aux
 
-LaTeX Warning: Label `tt' multiply defined.
+LaTeX Warning: Label `cc_all' multiply defined.
 
 )
 \openout1 = `bp_size_letter.aux'.
@@ -176,17 +176,17 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 49.
-LaTeX Font Info:    Try loading font information for U+lasy on input line 65.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 66.
 
 (/usr/share/texmf/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 65.
+LaTeX Font Info:    Try loading font information for U+msa on input line 66.
 
 (/usr/share/texmf/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2002/01/19 v2.2g AMS font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 65.
+LaTeX Font Info:    Try loading font information for U+msb on input line 66.
 
 (/usr/share/texmf/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2002/01/19 v2.2g AMS font definitions
@@ -195,13 +195,13 @@ File: umsb.fd 2002/01/19 v2.2g AMS font definitions
 File: Figures/full.png Graphic file (type png)
  <use Figures/full.png>
 
-LaTeX Warning: Float too large for page by 35.86623pt on input line 92.
+LaTeX Warning: Float too large for page by 35.86623pt on input line 93.
 
 <Figures/images.png, id=2, 482.5227pt x 624.8946pt>
 File: Figures/images.png Graphic file (type png)
  <use Figures/images.png>
 
-LaTeX Warning: Float too large for page by 47.86623pt on input line 102.
+LaTeX Warning: Float too large for page by 47.86623pt on input line 103.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
@@ -210,93 +210,101 @@ LaTeX Warning: Float too large for page by 47.86623pt on input line 102.
 
 Package natbib Warning: Citation `ssw' on page  undefined on input line 145.
 
-<Figures/cc_all.png, id=17, 482.5227pt x 624.8946pt>
+<Figures/BandWimages.png, id=17, 482.5227pt x 624.8946pt>
+File: Figures/BandWimages.png Graphic file (type png)
+
+<use Figures/BandWimages.png>
+
+LaTeX Warning: Float too large for page by 23.86623pt on input line 160.
+
+<Figures/cc_all.png, id=18, 482.5227pt x 624.8946pt>
 File: Figures/cc_all.png Graphic file (type png)
  <use Figures/cc_all.png>
 
-LaTeX Warning: Float too large for page by 23.86623pt on input line 154.
+LaTeX Warning: Float too large for page by 23.86623pt on input line 166.
 
-<Figures/tt_all.png, id=18, 482.5227pt x 624.8946pt>
+<Figures/tt_all.png, id=19, 482.5227pt x 624.8946pt>
 File: Figures/tt_all.png Graphic file (type png)
  <use Figures/tt_all.png>
 
-LaTeX Warning: Float too large for page by 23.86623pt on input line 161.
+LaTeX Warning: Float too large for page by 23.86623pt on input line 173.
 
-<Figures/cc_images.png, id=19, 482.5227pt x 624.8946pt>
+<Figures/cc_images.png, id=20, 482.5227pt x 624.8946pt>
 File: Figures/cc_images.png Graphic file (type png)
 
 <use Figures/cc_images.png>
 
-LaTeX Warning: Float too large for page by 23.86623pt on input line 167.
+LaTeX Warning: Float too large for page by 23.86623pt on input line 179.
 
-<Figures/tt_images.png, id=20, 482.5227pt x 624.8946pt>
+<Figures/tt_images.png, id=21, 482.5227pt x 624.8946pt>
 File: Figures/tt_images.png Graphic file (type png)
 
 <use Figures/tt_images.png>
 
-LaTeX Warning: Float too large for page by 23.86623pt on input line 173.
+LaTeX Warning: Float too large for page by 23.86623pt on input line 185.
 
-<Figures/im_211.png, id=21, 482.5227pt x 624.8946pt>
+<Figures/im_211.png, id=22, 482.5227pt x 624.8946pt>
 File: Figures/im_211.png Graphic file (type png)
  <use Figures/im_211.png>
 
-LaTeX Warning: Float too large for page by 35.86623pt on input line 180.
+LaTeX Warning: Float too large for page by 35.86623pt on input line 192.
 
-<Figures/closeup_211.png, id=22, 451.6875pt x 451.6875pt>
+<Figures/closeup_211.png, id=23, 451.6875pt x 451.6875pt>
 File: Figures/closeup_211.png Graphic file (type png)
 
 <use Figures/closeup_211.png>
-<Figures/intensity_1.png, id=23, 482.5227pt x 624.8946pt>
+<Figures/intensity_1.png, id=24, 482.5227pt x 624.8946pt>
 File: Figures/intensity_1.png Graphic file (type png)
 
 <use Figures/intensity_1.png>
 
-LaTeX Warning: Float too large for page by 35.86623pt on input line 193.
+LaTeX Warning: Float too large for page by 35.86623pt on input line 205.
 
-<Figures/intensity_2.png, id=24, 482.5227pt x 624.8946pt>
+<Figures/intensity_2.png, id=25, 482.5227pt x 624.8946pt>
 File: Figures/intensity_2.png Graphic file (type png)
 
 <use Figures/intensity_2.png>
 
-LaTeX Warning: Float too large for page by 33.92178pt on input line 200.
+LaTeX Warning: Float too large for page by 33.92178pt on input line 212.
 
-<Figures/cc_tt_plot.png, id=25, 482.5227pt x 624.8946pt>
+<Figures/cc_tt_plot.png, id=26, 482.5227pt x 624.8946pt>
 File: Figures/cc_tt_plot.png Graphic file (type png)
 
 <use Figures/cc_tt_plot.png>
 
-LaTeX Warning: Float too large for page by 35.86623pt on input line 208.
+LaTeX Warning: Float too large for page by 35.86623pt on input line 220.
 
-<Figures/cc_tt_plot_scaled.png, id=26, 482.5227pt x 624.8946pt>
+<Figures/cc_tt_plot_scaled.png, id=27, 482.5227pt x 624.8946pt>
 File: Figures/cc_tt_plot_scaled.png Graphic file (type png)
 
 <use Figures/cc_tt_plot_scaled.png>
 
-LaTeX Warning: Float too large for page by 23.86623pt on input line 215.
+LaTeX Warning: Float too large for page by 23.86623pt on input line 227.
 
 (./bp_size_letter.bbl)
 
 Package natbib Warning: There were undefined citations.
 
 [2] [3 <./Figures/full.png (PNG copy)>] [4 <./Figures/images.png (PNG copy)>]
-[5 <./Figures/cc_all.png (PNG copy)>] [6 <./Figures/tt_all.png (PNG copy)>]
-[7 <./Figures/cc_images.png (PNG copy)>] [8 <./Figures/tt_images.png (PNG copy)
->] [9 <./Figures/im_211.png (PNG copy)>] [10 <./Figures/closeup_211.png (PNG co
-py)>] [11 <./Figures/intensity_1.png (PNG copy)>] [12 <./Figures/intensity_2.pn
-g (PNG copy)>] [13 <./Figures/cc_tt_plot.png (PNG copy)>] [14 <./Figures/cc_tt_
-plot_scaled.png (PNG copy)>] (./bp_size_letter.aux)
+[5 <./Figures/BandWimages.png (PNG copy)>] [6 <./Figures/cc_all.png (PNG copy)>
+] [7 <./Figures/tt_all.png (PNG copy)>] [8 <./Figures/cc_images.png (PNG copy)>
+] [9 <./Figures/tt_images.png (PNG copy)>] [10 <./Figures/im_211.png (PNG copy)
+>] [11 <./Figures/closeup_211.png (PNG copy)>] [12 <./Figures/intensity_1.png (
+PNG copy)>] [13 <./Figures/intensity_2.png (PNG copy)>] [14 <./Figures/cc_tt_pl
+ot.png (PNG copy)>] [15 <./Figures/cc_tt_plot_scaled.png (PNG copy)>]
+(./bp_size_letter.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2377 strings out of 256214
- 27525 string characters out of 1916999
+ 2384 strings out of 256214
+ 27671 string characters out of 1916999
  87344 words of memory out of 1500000
- 5633 multiletter control sequences out of 10000+200000
+ 5639 multiletter control sequences out of 10000+200000
  12013 words of font info for 49 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
- 32i,11n,35p,580b,244s stack positions out of 5000i,500n,6000p,200000b,15000s
+ 32i,10n,35p,580b,244s stack positions out of 5000i,500n,6000p,200000b,15000s
 </usr/share/texmf/fonts/type1/bluesky/cm/cmbx10.pfb></usr/share/texmf/fonts/t
 ype1/bluesky/cm/cmbx12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmbxti10.pf
 b></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf/fonts/ty
@@ -304,11 +312,12 @@ pe1/bluesky/cm/cmr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr6.pfb></us
 r/share/texmf/fonts/type1/bluesky/cm/cmr7.pfb></usr/share/texmf/fonts/type1/blu
 esky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr9.pfb></usr/share/
 texmf/fonts/type1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/bluesky/c
-m/cmti10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti9.pfb></usr/share/tex
-mf/fonts/type1/bluesky/cm/cmtt10.pfb>
-Output written on bp_size_letter.pdf (14 pages, 7549691 bytes).
+m/cmsy7.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti10.pfb></usr/share/tex
+mf/fonts/type1/bluesky/cm/cmti9.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cm
+tt10.pfb>
+Output written on bp_size_letter.pdf (15 pages, 8056264 bytes).
 PDF statistics:
- 112 PDF objects out of 1000 (max. 8388607)
+ 120 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 
