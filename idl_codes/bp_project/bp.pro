@@ -49,15 +49,16 @@ function bp, $
     ;; 4  Make Structures
     if keyword_set(make_str) then begin
 
-        tags = [ 'wavelength', 'temperature', 'x_ref', 'y_ref', 'radius', 'max_cc', 'max_tt' ]
+        tags = [ 'wavelength', 'temperature', 'x_ref', 'y_ref', 'radius', $
+            'bp_im', 'cc_im', 'tt_im' ]
         A = []
 
         foreach w, waves, i do begin
-            print, i
+
             restore, path + 'cc_' + w + '.sav'
             s = create_struct( $
                 tags, $
-                w, temps[i], x0, y0, radius, max_cc, max_tt )
+                w, temps[i], x0, y0, radius, cube, max_cc, max_tt )
             A = [A, s]
         endforeach
 
@@ -69,7 +70,7 @@ function bp, $
     ;; 5  Graphics
     if keyword_set(gr) then begin
         resolve_routine, "bp_graphics", /either
-        bp_graphics, A, /make_images, make_colorbar=0, buffer=0, sav=0
+        bp_graphics, A, /make_images, j=0, make_colorbar=0, buffer=0, sav=0
         ;bp_graphics, /make_images, j=0, make_colorbar=1, buffer=0, path=path, sav=0
         ;bp_graphics, path=path, /make_plots,  j=3, make_colorbar=0, buffer=0
         return, 0

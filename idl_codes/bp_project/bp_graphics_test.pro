@@ -4,7 +4,7 @@
 ; Description:      Make images and plots of cc and tt for bp
 
 
-pro bp_graphics, path=path, buffer=buffer, make_plots=make_plots, make_images=make_images, $
+pro bp_graphics, buffer=buffer, make_plots=make_plots, make_images=make_images, $
     j=j, make_colorbar=make_colorbar, sav=sav
 
 
@@ -43,21 +43,12 @@ pro bp_graphics, path=path, buffer=buffer, make_plots=make_plots, make_images=ma
 ;    my_data = []
 ;    foreach w, waves, i do begin
 ;
-;        ;; Read in first image from each data set
-;        fls = file_search(path + "*" + w + "A*.fits")
-;        read_sdo, fls[0], index, data
-;        x = 1140 & y = 2630
-;        z = 50
-;        ax = x - z & bx = x + z  
-;        ay = y - z & by = y + z  
-;        my_data = [ [[ my_data ]], [[ data[ax:bx, ay:by, 0] ]] ]
-
-        ;; Restore aligned data set
+    ;; Restore aligned data set
 ;        restore, path + "aligned_" + waves[i] + ".sav"
 ;        s = (size(cube))[1]
 ;        z = 200
 ;        my_data = [ [[ my_data ]], [[ cube[z:s-z, z:s-z, 0] ]] ]
-        ; ... This should be saved as a cube, just like cc and tt. Less confusing...
+    ; ... This should be saved as a cube, just like cc and tt. Less confusing...
 
 ;    endforeach
 
@@ -69,6 +60,8 @@ pro bp_graphics, path=path, buffer=buffer, make_plots=make_plots, make_images=ma
 
     ;; Change timelag from image number/cadence to minutes
     ;tt = (tt * 12.) / 60.
+
+    my_data = x
 
     ;; Create structure of data cubes (images, cc images, and tt_images)
     d = { $
@@ -118,12 +111,19 @@ pro bp_graphics, path=path, buffer=buffer, make_plots=make_plots, make_images=ma
 
     ;; Start graphics
 
-    for i = 0, n_elements(waves)-1 do begin
+    for i = 0, n_elements(A)-1 do begin
+
+        my_title = "$\lambda$ = " + waves[i] + " $\AA$, log(T) = " + temps[i] + " K"
 
         if keyword_set(make_images) then begin
         ;;; color x0, y0 in every image!
 
-            p = image( d.(j)[*,*,i], $
+            n = sqrt(n_elements(A[i].max_cc))
+            my_data = x
+            cc = reform(A[i].max_cc, n, n)
+            tt = reform(A[i].max_tt, n, n)
+
+            p = image( cc, $
                 /current, /device, axis_style=2, $
                 ;image_location=[1090, 2580], $
                 position = [ x[i], y[i], x[i] + side, y[i] + side] $
@@ -133,15 +133,9 @@ pro bp_graphics, path=path, buffer=buffer, make_plots=make_plots, make_images=ma
 
         if keyword_set(make_plots) then begin
 
-            ;; Read in data from files created previously.
-            data_path = '/solarstorm/laurel07/Research_repo/new_python_codes/bp_size/'
-            file = data_path + waves[i] + '_bp_sizes.dat'
-            openr, mylun, file, /get_lun
-            array = fltarr(5, file_lines(file))
-            readf, mylun, array
-            x_coo = array[0, *] & y_coo = array[1, *]
-            r = reform(array[2, *]) & c = reform(array[3, *]) & t = reform(array[4, *])
-            free_lun, mylun
+            r = A[i].radius
+            c = A[i].max_cc
+            t = A[i].max_tt
 
             ; Scale timelag by 1/3 ;; or use some array manipulation to sort, then cut
             ;r = r[where(abs(t) le 50)] ;c = c[where(abs(t) le 50)] ;t = t[where(abs(t) le 50)]
@@ -161,17 +155,16 @@ pro bp_graphics, path=path, buffer=buffer, make_plots=make_plots, make_images=ma
                 /device, $
                 axis_style=2, $
                 position = [ x[i], y[i], x[i] + side, y[i] + side], $
-                ;layout=[1,1,1], $
                 xstyle=1, ystyle=1, $
                 aspect_ratio = (x_r)/(y_r), $
-                ;magnitude = t, $
+                magnitude = t, $
                 symbol='dot', sym_filled = 1, sym_size = 1.0 $
                 )
         endif
 
 
         ;; Set properties that apply to both images and plots.
-        p.title=my_title[i]
+        p.title=my_title
         p.font_size=fontsize
         ;p.xrange = [0, 35]
         ;p.yrange = [0, max(y_data)]
@@ -210,7 +203,7 @@ pro bp_graphics, path=path, buffer=buffer, make_plots=make_plots, make_images=ma
         cbar.font_style="italic"
         cbar.title=labels[j]
         cbar.border=1
-        
+
     endif
 
     x_title = text(0.5, 0.02, xlabel, $
