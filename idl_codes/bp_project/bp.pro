@@ -6,16 +6,22 @@
 
 
 function bp, $
-    path, x_center, y_center, waves, temps, $
+    ;path, waves, temps, x_cen, y_cen, $
     read_fits=read_fits, align=align, run_cc=run_cc, make_str=make_str, gr=gr
 
 
+    path = "/solarstorm/laurel07/data/aia/"
+
     ;; 1  Use procedure "bp_read_fits.pro" to read data and/or headers from fits files.
     if keyword_set(read_fits) then begin
-        resolve_routine, "bp_read_my_fits"
-        ;bp_read_my_fits, path=path, x=x, y=y, wave=wave, $
-        ;    my_header=h, my_data=d
+        resolve_routine, "bp_read_my_fits", /either
+        bp_read_my_fits, path=path
     endif
+
+    fls = file_search(path + "cube_*.sav")
+    for f, fls do begin
+        restore, f
+        s = 
 
 
     ;; 2  Use procedure "bp_align.pro" to align the data
@@ -62,32 +68,25 @@ function bp, $
             A = [A, s]
         endforeach
 
-        return, A
 
     endif
 
 
     ;; 5  Graphics
     if keyword_set(gr) then begin
-        resolve_routine, "bp_graphics", /either
-        bp_graphics, A, /make_images, j=0, make_colorbar=0, buffer=0, sav=0
+        resolve_routine, "bp_graphics_test", /either
+        bp_graphics_test, A, /make_images, j=1, make_colorbar=1, buffer=0, sav=0
         ;bp_graphics, /make_images, j=0, make_colorbar=1, buffer=0, path=path, sav=0
         ;bp_graphics, path=path, /make_plots,  j=3, make_colorbar=0, buffer=0
-        return, 0
+        return, A
     endif
 
 end
 
 
-;; Main level code
-path = "/solarstorm/laurel07/data/aia/"
-temps = ['6.8', '5.6, 7.0', '5.8', '6.2, 7.3', '6.3', '4.7']
-waves = ['94','131','171','193','211','304'] ;,'335']
-x_center = 1140 & y_center = 2360
+A = bp( /read_fits)
 
-;;; also need desired range to align and to cut out for analysis?
-
-A = bp( path, x_center, y_center, waves, temps, /make_str )
+;A = bp( path, waves, temps, x_center, y_center, /make_str, /gr)
 
 
 end
