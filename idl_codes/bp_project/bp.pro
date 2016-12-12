@@ -11,17 +11,26 @@ function bp, $
 
 
     path = "/solarstorm/laurel07/data/aia/"
+    waves = ['94','131','171','193','211','304'] ;,'335']
+    temps = ['6.8', '5.6, 7.0', '5.8', '6.2, 7.3', '6.3', '4.7']
+    x = 1140 & y = 2360
+
+	waves = ['211']
 
     ;; 1  Use procedure "bp_read_fits.pro" to read data and/or headers from fits files.
     if keyword_set(read_fits) then begin
+		A = []
         resolve_routine, "bp_read_my_fits", /either
-        bp_read_my_fits, path=path
+		foreach w, waves do begin
+			s = bp_read_my_fits(path=path, wave=w, nodata=1)
+			A = [A, s]
+		endforeach
     endif
 
     fls = file_search(path + "cube_*.sav")
     for f, fls do begin
         restore, f
-        s = 
+        s =
 
 
     ;; 2  Use procedure "bp_align.pro" to align the data
