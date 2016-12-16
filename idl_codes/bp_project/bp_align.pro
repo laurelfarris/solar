@@ -1,35 +1,40 @@
 ; Programmer:       Laurel Farris
 ; Filename:         bp_align.pro
-; Last modified:    28 November 2016
+; Last modified:    13 December 2016
 ; Function(s):      align_cube3.pro, alignoffset.pro, align_shift_sub.pro
 ; Description:      Align images
 
 
-function bp_align, data_in, path=path, wave=wave, sav=sav
-;pro bp_align, path, wave, data_in, data_out, sav=sav
+pro bp_align, data_in, path=path, waves=waves, sav=sav, fname=fname
 
 
-        cube = data_in
+    resolve_routine, "align_cube3", /either
+    foreach wave, waves, i do begin
 
-        ;; Do first alignment. Note this may take a while, depeding on size of cube
-        align_cube3, cube, x, y  ;; don't actually need y, but whatev.
-        stds = [x]
-        align_cube3, cube, x, y
-        stds = [stds, x]
+        print, '--------------------------------------------'
+        print, "Beginning alignment for wavelength ", wave
 
-        k = 1
-        while (stds[k] lt stds[k-1]) do begin
-            align_cube3, cube, x, y
-            stds = [stds, x]
-            k=k+1
-        endwhile
+        ;; Set up filename to save to, and pull data cube from structure
+        cube = data_in[i].data
 
-        print, "Finished with alignment"
+        ;; Start alignment. Note this may take a while, depending on size of cube;
+        ;;      1000 x 1000 x 300 x 6 took ~4 hours.
+        my_average = []
+        repeat begin
+            ALIGN_CUBE3, cube, avg 
+            my_average = [my_average, avg]
+            k = n_elements(my_average)
+        endrep until (k ge 2 && my_average[k-1] gt my_average[k-2])
+        
+        
 
+        ;; Save aligned cube.
+        if keyword_set(sav) then begin
+            save, cube, filename = path + "aligned_" + wave + ".sav"
+        endif
 
-    ;; Now you have an aligned, limb-subtracted data cube!
-    ;; Run cross-correlation procedure(s), or whatever analysis suits your fancy.
+        data_in[i].data = cube
 
-    return, cube
+    endforeach
 
 end

@@ -20,54 +20,39 @@
 ;   	    	function just moves the elements along an integer number.
 ;-
 
-PRO timelag, $
-    x, xs, tau, $   ; input x,xs,tau
-    maxcor       ; output maxcor (2x1)     ;;;;, xx, yy
+PRO timelag, x, xs, tau, c, maxcor
 
-;ii = string(xx) & jj = string(yy)
-  
-maxcor=FLTARR(2)
-c = FLTARR( N_ELEMENTS(tau) )
-mx = MEAN(x)
-mxs = MEAN(xs)  
-  
-;; Calculate correlation for each possible timelag
-FOR i=0, N_ELEMENTS(tau)-1 DO BEGIN
-     
-  c[i] = TOTAL( (x-mx ) * SHIFT( (xs-mxs), tau[i] ) ) / $
-           SQRT( TOTAL( (x-mx)^2 ) * TOTAL( (xs-mxs)^2 ) )
-          
-ENDFOR
+    maxcor=FLTARR(2)
+    c = FLTARR( N_ELEMENTS(tau) )
+    mx = MEAN(x)
+    mxs = MEAN(xs)  
+      
+    ;; Calculate correlation for each possible timelag
+    FOR i=0, N_ELEMENTS(tau)-1 DO BEGIN
+         
+        c[i] = TOTAL( (x-mx ) * SHIFT( (xs-mxs), tau[i] ) ) / $
+               SQRT( TOTAL( (x-mx)^2 ) * TOTAL( (xs-mxs)^2 ) )
+              
+    ENDFOR
 
-;window, 1
-;PLOT,tau,c,yrange=[0,1], ytitle="max correlation", xtitle="timelag"
+    ; window, 1
+    ;PLOT, tau, c, yrange=[0,1], ytitle="max correlation", xtitle="timelag"
+    ;p = plot(tau, c,  ytitle="max correlation", xtitle="timelag")
 
-;; Save highest correlation value (bestcor) along with the corresponding
-;;     timelag (tau(bestcor)).    
+    ;; Save highest correlation value (bestcor) along with the corresponding
+    ;;     timelag (tau(bestcor)).    
 
-bestcor=WHERE(c EQ MAX(c))
-IF N_ELEMENTS(bestcor) NE 1 THEN BEGIN
-	;PRINT,tau(bestcor),c(bestcor)
-	bestcor=MEDIAN(bestcor)
-ENDIF
+    bestcor=WHERE(c EQ MAX(c))
+    IF N_ELEMENTS(bestcor) NE 1 THEN BEGIN
+        ;PRINT,tau(bestcor),c(bestcor)
+        bestcor=MEDIAN(bestcor)
+    ENDIF
 
-;Assign bestcor and its tau to maxcor (output)
-maxcor[0]=tau[bestcor]
-maxcor[1]=c[bestcor]
+    ;Assign bestcor and its tau to maxcor (output)
+    maxcor[0] = tau[bestcor]
+    maxcor[1] = c[bestcor]
+
+
+    ;print, 'line 1 lags line 2 by number of pixels corresponding to peak of graph'
    
 END
-
-;cc = string(c(bestcor))
-;tt = string(tau(bestcor))
-
-; Plot all correlation values vs. timelag
-;!P.MULTI=[0,1,1,0,0]
-;window,0,xsize=850,ysize=250
-;color=0
-;background=255
-;charsize=1.25
-;PLOT,tau,c, yrange=[min(c),max(c)],$
-;    color=color,background=background,charsize=charsize, $
-;    xstyle=1,ystyle=1, ytitle='correlation', $
-;    xtitle='timelag     coords = ('+ii+', '+ jj+'), cc = '+cc+ $
-;                        '   tau = '+tt

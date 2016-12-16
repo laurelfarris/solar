@@ -2,77 +2,85 @@
 ; Description:          Using (aligned) data cubes,
 ;                           run cross-correlation and save max value, along with
 ;                           x and y coordinates, timelag, and distance from reference pixel
-; Last modified:        05 December 2016
+; Last modified:        16 December 2016
 
 
-; Pixel coordinates for bp1
-;x = 240
-;y = 1730
-; 'radius'
-;r = 50
-; open file for writing
-;file = 'size.dat'
-;openw, mylun, /get_lun, file
-;for x0 = (x-r),(x+r) do begin
-;    for y0 = (y-r),(y+r) do begin
-;        d = sqrt( (x-x0)^2 + (y-y0)^2)
-;        intensity = cube[x0,y0,0]
-;        printf, mylun, d, intensity
-;    endfor
-;endfor
-;free_lun, mylun
+pro bp_run_correlation, struc, sav=sav
 
 
-;; still need this?
-; Open file to save data
-        ;file = '~/research/new_codes/bp_size/' + wave[i] + '_bp_sizes.dat'
-        ;openw, mylun, /get_lun, file
-                ;printf, mylun, x, y, r, maxcor[1], maxcor[0]
-        ;free_lun, mylun
+    ;cube = struc.data
 
+    ; trim cube a bit for code testing (aka time saving) purposes
+    cube = struc.data[10:89, 10:89, *]
 
-pro bp_run_correlation, cube, $
-    x0, y0, radius, max_cc, max_tt
-
-
-    ;; Called individually for each wavelength/cube (for now).
-    ;; Eventually should take structure that includes wavelength, time of obs, etc.
-
-    ;; num images, timelag, length of data dimension
+    ;; num images, array of possible timelags,
     t = (size(cube))[3]
-    tau = indgen(t)-(t/2)
-    side = (size(cube))[1]
+    ;; Array of possible timelags [image number]
+    ;tau = indgen(t)-(t/2)
+    ;; possible timelags [minutes], using the observation time from fits header
+    tau = (struc.time)/60.
+    ;; length of data dimensions 1 and 2
+    s1 = (size(cube))[1]
+    s2 = (size(cube))[2]
 
-    ;; Set up "reference" pixel as the brightest in first image in time series.
-    ref = cube[*,*,0]
-    location = where( ref eq max(ref) )
-    x0 = fix(array_indices(ref, location))[0]
-    y0 = fix(array_indices(ref, location))[1]
 
-    ;; Initialize arrays for values of interest.
-    radius = []
-    max_cc = []
-    max_tt = []
+    ;x0 = 50 & y0 = 50
+    ;x1 = 66 & y1 = 47
+    ;x2 = 60 & y2 = 63
+    ;timelag, cube[x0,y0,*], cube[x1,y1,*], tau, c, maxcor
 
-    ;; Run timelag.pro and save correlation, timelag, and radius values
-    for y = 0, side-1 do begin
-        for x = 0, side-1 do begin
 
-            timelag, cube[x0, y0, *], cube[x, y, *], tau, maxcor
 
-            radius = [radius, sqrt((x0-x)^2 + (y0-y)^2 ) ]
-            max_cc = [max_cc, maxcor[1]]
-            max_tt = [max_tt, maxcor[0]]
+    ;; Coordinates for center and four pixels around the center
+    ;;      (kind of hacky at the moment... )
+    xc = s1/2 & yc = s2/2
+    x0 = [xc, xc+1, xc-1];, xc, xc]
+    y0 = [yc, yc, yc];, yc+1, yc-1]
 
+    cc_cube = []
+    tt_cube = []
+
+    resolve_routine, "timelag", /either
+    start = systime(/seconds)
+    for j = 0, n_elements(x0)-1 do begin
+        
+        ;; Initialize arrays for values of interest.
+        max_cc = fltarr(s1, s2, /nozero)
+        max_tt = fltarr(s1, s2, /nozero)
+
+        for y = 0, s2-1 do begin
+        for x = 0, s1-1 do begin
+
+            ;; Run timelag.pro, returns maxcor=[tt, cc]
+            timelag, cube[x0[j], y0[j], *], cube[x, y, *], tau, maxcor
+
+            ;; Make 2D data arrays for cc and tt
+            max_cc[x,y] = maxcor[1]
+            max_tt[x,y] = maxcor[0]
+
+        endfor
         endfor 
-     endfor 
+
+        cc_cube = [ [[cc_cube]], max_cc ]
+        tt_cube = [ [[tt_cube]], max_tt ]
+
+    endfor
 
 
 
-    ;; Center coos, change these for a different region
-;    x1 = 50 & y1 = 50
-;    x2 = 66 & y2 = 47
-;    x3 = 60 & y3 = 63
+    ;; Append cc and tt arrays to structure (A[i])
+    help, struc
+    struc = create_struct( struc, 'cc', max_cc, 'tt', max_tt )
+    help, struc
+
+    finish = systime(/seconds)
+
+    ;print, j+1, " rounds of timelag for one bandpass took ", finish-start, " seconds."
 
 
+    if keyword_set(sav) then begin
+        save, xc, yc, max_cc, max_tt, filename = path + 'cc_' + w + '.sav'
+    endif
+
+stop
 end

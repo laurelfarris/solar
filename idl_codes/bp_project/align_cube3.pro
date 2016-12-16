@@ -17,38 +17,47 @@
 ;                input
 ;             Altered by Shaun Bloomfield April 2009 with optional 
 ;                output of calculated shifts
-;;	      Slight alterings by Laurel Farris 2015, commented with 
-;;               double semi-colons (;;)
 ;
 ;-
-PRO align_cube3, cube, x_sdv, y_sdv ;quiet=quiet, shifts=shifts ... ?
 
-sz = SIZE( cube ) ; For accessing data cube dimensions
-ref = REFORM( cube[*,*,(sz[3]/2)] ) ;; Use middle image as ref
-shifts = FLTARR( 2, sz[3] ) ;; shift in x and y (2) for every image (sz[3]).
+; Used by Laurel Farris;     Last modified:  13 December 2016
 
-;; Align to first image if no reference image is specified
-;IF ( N_ELEMENTS(ref) EQ 0 ) THEN ref=REFORM( cube[*, *, 0] ) ELSE ref=ref 
-;IF ~(quiet) THEN PRINT,'   image      x offset      y offset'
 
-;PRINT, "Start:	", SYSTIME() ; Display time that code started running
-FOR i = 0, sz[3]-1 DO BEGIN
-;  	PRINT,i
-   offset = ALIGNOFFSET( cube[*, *, i], ref )
-    ;IF ~(quiet) THEN PRINT, i, offset[0], offset[1]
-    ;IF ( offset[0] GT 30 ) THEN print, offset[0]
-    ;IF ( offset[1] GT 30 ) THEN print, offset[1]
-    ;IF abs(offset(0)) GT 30 THEN offset(0)=0.0
-    ;IF abs(offset(1)) GT 30 THEN offset(1)=0.0
-    cube[*, *, i] = ALIGN_SHIFT_SUB( cube[*, *, i], -offset[0], -offset[1] )
-       ;; Not sure why offset values are set to be negative...
-    shifts[*, i] = -offset
-ENDFOR
+PRO align_cube3, cube, avg
 
-;PRINT, "Finish: ", SYSTIME() ; Display time that code finished running
-x_sdv = STDDEV( shifts[0,*] )
-y_sdv = STDDEV( shifts[1,*] )
-PRINT, FORMAT='("x stddev: ", F0.4)' , x_sdv
-PRINT, FORMAT='("y stddev: ", F0.4)' , y_sdv
+    ;; Get number of images in data cube (length of third dimension, if you will).
+    sz = (size(cube))[3]
+    ;; Use middle image as ref
+    ref = REFORM( cube[*,*,(sz/2)-1] )
+    ;; 2xN array for shifts in x and y for every image, for a total of N images.
+    shifts = FLTARR( 2, sz)
+
+
+    PRINT, "Start:	", SYSTIME()
+    FOR i = 0, sz-1 DO BEGIN
+        
+        ;print, i
+        offset = ALIGNOFFSET( cube[*, *, i], ref )
+        ;IF ~(quiet) THEN PRINT, i, offset[0], offset[1]
+        ;IF ( offset[0] GT 30 ) THEN print, offset[0]
+        ;IF ( offset[1] GT 30 ) THEN print, offset[1]
+        ;IF abs(offset(0)) GT 30 THEN offset(0)=0.0
+        ;IF abs(offset(1)) GT 30 THEN offset(1)=0.0
+        cube[*, *, i] = ALIGN_SHIFT_SUB( cube[*, *, i], -offset[0], -offset[1] )
+        shifts[*, i] = -offset
+    ENDFOR
+
+    PRINT, "Finish: ", SYSTIME()
+
+    ;; Save the standard deviation in shifts (to account for both directions)
+    ;;  to use as a test for when to stop the alignment.
+    x_sdv = STDDEV( shifts[0,*] )
+    y_sdv = STDDEV( shifts[1,*] )
+    
+    x_sdv = mean( abs( shifts[0,*] ))
+    y_sdv = mean( abs( shifts[1,*] ))
+
+    avg = MEAN([x_sdv, y_sdv])
+    PRINT, FORMAT='("avg. shift: ", F0.4)' , avg
 
 END

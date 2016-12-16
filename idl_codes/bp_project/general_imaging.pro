@@ -6,17 +6,6 @@
 ;                       in the same place on top of each other
 
 
-;; Window
-w = window($
-    dimensions=[700,820], /buffer, title="", $
-    location=[x_offset, y_offset])  ; window's screen offset (not the actual graphic)
-
-; window methods
-w.window.SetCurrent
-
-
-;; Dimensions
-
 ;n = num_images in a single dimension
 ;w = length of window in pixels
 ;gap = 50 pixels
