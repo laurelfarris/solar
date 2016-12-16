@@ -65,7 +65,12 @@ resolve_routine, "bp_align", /either
 
 ;; 3  Run cross-correlation on aligned data cubes
 resolve_routine, "bp_run_correlation", /either
-bp_run_correlation, A[3], sav=0
+struc = A[3]
+bp_run_correlation, struc, sav=0
+
+
+;; 3.5  Play with cross-correlation data
+im = image( mean(struc.cc, dimension=3), layout=[1,1,1] )
 
 
 ;; 4

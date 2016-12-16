@@ -61,21 +61,18 @@ pro bp_run_correlation, struc, sav=sav
         endfor
         endfor 
 
-        cc_cube = [ [[cc_cube]], max_cc ]
-        tt_cube = [ [[tt_cube]], max_tt ]
+        cc_cube = [ [[cc_cube]], [[max_cc]] ]
+        tt_cube = [ [[tt_cube]], [[max_tt]] ]
 
     endfor
 
 
 
     ;; Append cc and tt arrays to structure (A[i])
-    help, struc
-    struc = create_struct( struc, 'cc', max_cc, 'tt', max_tt )
-    help, struc
+    struc = create_struct( struc, 'coos', [[x0], [y0]], 'cc', cc_cube, 'tt', tt_cube )
 
     finish = systime(/seconds)
-
-    ;print, j+1, " rounds of timelag for one bandpass took ", finish-start, " seconds."
+    print, j+1, " rounds of timelag for one bandpass took ", finish-start, " seconds."
 
 
     if keyword_set(sav) then begin
